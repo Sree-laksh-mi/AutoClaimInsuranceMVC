@@ -4,18 +4,19 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace AutoClaimInsuranceMVC.Models
 {
     public class RegisteredUser
     {
-        [Key]
         [Required(ErrorMessage = "Insurer ID is required")]
         public string insurerId { get; set; }
+        [Key]
         [Required(ErrorMessage = "Email is required")]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
-        public string userID { get; set; }
+        public string userId { get; set; }
         [Required(ErrorMessage = "Password is required")]
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
@@ -23,10 +24,10 @@ namespace AutoClaimInsuranceMVC.Models
         [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and should contain : upper case (A-Z), lower case (a-z), number (0-9) and special character (e.g. !@#$%^&*)")]
         public string password { get; set; }
         [NotMapped]
-        [System.ComponentModel.DataAnnotations.Compare("Password")]
-        [DataType(DataType.Password)]
+        [System.ComponentModel.DataAnnotations.Compare("password")]
         [Required(ErrorMessage = "Confirm Password required")]
-        public string ConfirmPassword { get; set; }
+        [DataType(DataType.Password)]
+        public string confirmPassword { get; set; }
 
 
         public virtual Insurer insurer { get; set; }

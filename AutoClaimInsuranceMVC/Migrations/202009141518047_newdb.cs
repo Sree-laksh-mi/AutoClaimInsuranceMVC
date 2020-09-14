@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class fkupdate : DbMigration
+    public partial class newdb : DbMigration
     {
         public override void Up()
         {
@@ -64,14 +64,13 @@
                 "dbo.RegisteredUsers",
                 c => new
                     {
+                        userId = c.String(nullable: false, maxLength: 128),
                         insurerId = c.String(nullable: false, maxLength: 128),
-                        userID = c.String(nullable: false),
                         password = c.String(nullable: false, maxLength: 255),
-                        insurer_insurerId = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.insurerId)
-                .ForeignKey("dbo.Insurers", t => t.insurer_insurerId)
-                .Index(t => t.insurer_insurerId);
+                .PrimaryKey(t => t.userId)
+                .ForeignKey("dbo.Insurers", t => t.insurerId, cascadeDelete: true)
+                .Index(t => t.insurerId);
             
             CreateTable(
                 "dbo.Reports",
@@ -83,6 +82,7 @@
                         status = c.String(nullable: false),
                         content = c.String(nullable: false),
                         reportDate = c.DateTime(nullable: false),
+                        amount = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.reportId)
                 .ForeignKey("dbo.Claims", t => t.claimId, cascadeDelete: true)
@@ -109,12 +109,12 @@
             DropForeignKey("dbo.Reports", "officerId", "dbo.Officers");
             DropForeignKey("dbo.Reports", "claimId", "dbo.Claims");
             DropForeignKey("dbo.Claims", "insurance_policyNumber", "dbo.Insurances");
-            DropForeignKey("dbo.RegisteredUsers", "insurer_insurerId", "dbo.Insurers");
+            DropForeignKey("dbo.RegisteredUsers", "insurerId", "dbo.Insurers");
             DropForeignKey("dbo.Insurances", "insurerId", "dbo.Insurers");
             DropForeignKey("dbo.Claims", "insurerId", "dbo.Insurers");
             DropIndex("dbo.Reports", new[] { "claimId" });
             DropIndex("dbo.Reports", new[] { "officerId" });
-            DropIndex("dbo.RegisteredUsers", new[] { "insurer_insurerId" });
+            DropIndex("dbo.RegisteredUsers", new[] { "insurerId" });
             DropIndex("dbo.Insurances", new[] { "insurerId" });
             DropIndex("dbo.Claims", new[] { "insurance_policyNumber" });
             DropIndex("dbo.Claims", new[] { "insurerId" });
