@@ -137,6 +137,10 @@
     <Compile Include="Migrations\202009131410124_fkupdate.designer.cs">
       <DependentUpon>202009131410124_fkupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009140539354_amount colmn.cs" />
+    <Compile Include="Migrations\202009140539354_amount colmn.designer.cs">
+      <DependentUpon>202009140539354_amount colmn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoClaimContext.cs" />
     <Compile Include="Models\Claim.cs" />
@@ -306,6 +310,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009131410124_fkupdate.resx">
       <DependentUpon>202009131410124_fkupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009140539354_amount colmn.resx">
+      <DependentUpon>202009140539354_amount colmn.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

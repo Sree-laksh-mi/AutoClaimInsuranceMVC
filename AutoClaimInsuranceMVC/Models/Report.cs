@@ -22,6 +22,8 @@ namespace AutoClaimInsuranceMVC.Models
         public string content { get; set; }
         [DataType(DataType.Date)]
         public DateTime reportDate { get; set; }
+        [Required]
+        public double amount { get; set; }
 
 
 
