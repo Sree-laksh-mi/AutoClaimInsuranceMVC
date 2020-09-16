@@ -303,6 +303,8 @@
     <Content Include="Views\Officer\OfficerLogin.cshtml" />
     <Content Include="Views\User\InsuranceView.cshtml" />
     <Content Include="Views\User\Claim.cshtml" />
+    <Content Include="Views\Officer\ClaimOfficerPage.cshtml" />
+    <Content Include="Views\Officer\InsuranceOfficerPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

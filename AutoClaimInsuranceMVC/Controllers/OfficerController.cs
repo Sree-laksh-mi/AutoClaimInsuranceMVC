@@ -32,9 +32,9 @@ namespace AutoClaimInsuranceMVC.Controllers
                 Session["Officername"] = (user.firstName + " " + user.lastName).ToString();
                 Session["Role"] = user.role.ToString();
                 if (user.role == "Insurance officer")
-                    return RedirectToAction("Insuranceofficer", "Claim");
+                    return RedirectToAction("InsuranceOfficerPage");
                 else if (user.role == "Claim officer")
-                    return RedirectToAction("Claimofficer", "Claim");
+                    return RedirectToAction("ClaimOfficerPage");
                 else
                     return RedirectToAction("Assessor", "Claim");
 
@@ -67,5 +67,65 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return clearText;
         }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ClaimOfficerPage()
+        {
+            var claim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
+            if (claim != null)
+            {
+                return View(claim);
+            }
+            else
+            {
+                ViewBag.Error = "Claim not exists";
+            }
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult InsuranceOfficerPage()
+        {
+            var claim = db.Claims.Where(c => c.status.Equals("not claimed")).ToList();
+            if (claim !=null)
+            {
+                return View(claim);
+            }
+            else
+            {
+                ViewBag.Error = "Claim not exists";
+            }
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
     }
 }
