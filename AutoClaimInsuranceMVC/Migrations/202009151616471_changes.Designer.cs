@@ -7,13 +7,13 @@ namespace AutoClaimInsuranceMVC.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class newdb : IMigrationMetadata
+    public sealed partial class changes : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(newdb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changes));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009141518047_newdb"; }
+            get { return "202009151616471_changes"; }
         }
         
         string IMigrationMetadata.Source

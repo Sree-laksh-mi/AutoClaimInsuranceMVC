@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newdb : DbMigration
+    public partial class changes : DbMigration
     {
         public override void Up()
         {
@@ -14,7 +14,7 @@
                         claimId = c.Int(nullable: false, identity: true),
                         insurerId = c.String(nullable: false, maxLength: 128),
                         MailID = c.String(nullable: false),
-                        policyNumber = c.Int(nullable: false),
+                        policyNumber = c.String(nullable: false),
                         dateAndTime = c.DateTime(nullable: false),
                         policeCase = c.String(nullable: false),
                         firNumber = c.String(nullable: false),
@@ -22,13 +22,22 @@
                         rcCopy = c.String(nullable: false),
                         status = c.String(nullable: false),
                         claimDate = c.DateTime(nullable: false),
-                        insurance_policyNumber = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.claimId)
                 .ForeignKey("dbo.Insurers", t => t.insurerId, cascadeDelete: true)
-                .ForeignKey("dbo.Insurances", t => t.insurance_policyNumber)
-                .Index(t => t.insurerId)
-                .Index(t => t.insurance_policyNumber);
+                .Index(t => t.insurerId);
+            
+            CreateTable(
+                "dbo.Insurers",
+                c => new
+                    {
+                        insurerId = c.String(nullable: false, maxLength: 128),
+                        firstName = c.String(nullable: false),
+                        lastName = c.String(nullable: false),
+                        address = c.String(nullable: false),
+                        mobileNumber = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.insurerId);
             
             CreateTable(
                 "dbo.Insurances",
@@ -47,18 +56,6 @@
                 .PrimaryKey(t => t.policyNumber)
                 .ForeignKey("dbo.Insurers", t => t.insurerId, cascadeDelete: true)
                 .Index(t => t.insurerId);
-            
-            CreateTable(
-                "dbo.Insurers",
-                c => new
-                    {
-                        insurerId = c.String(nullable: false, maxLength: 128),
-                        firstName = c.String(nullable: false),
-                        lastName = c.String(nullable: false),
-                        address = c.String(nullable: false),
-                        mobileNumber = c.String(nullable: false),
-                    })
-                .PrimaryKey(t => t.insurerId);
             
             CreateTable(
                 "dbo.RegisteredUsers",
@@ -108,7 +105,6 @@
         {
             DropForeignKey("dbo.Reports", "officerId", "dbo.Officers");
             DropForeignKey("dbo.Reports", "claimId", "dbo.Claims");
-            DropForeignKey("dbo.Claims", "insurance_policyNumber", "dbo.Insurances");
             DropForeignKey("dbo.RegisteredUsers", "insurerId", "dbo.Insurers");
             DropForeignKey("dbo.Insurances", "insurerId", "dbo.Insurers");
             DropForeignKey("dbo.Claims", "insurerId", "dbo.Insurers");
@@ -116,13 +112,12 @@
             DropIndex("dbo.Reports", new[] { "officerId" });
             DropIndex("dbo.RegisteredUsers", new[] { "insurerId" });
             DropIndex("dbo.Insurances", new[] { "insurerId" });
-            DropIndex("dbo.Claims", new[] { "insurance_policyNumber" });
             DropIndex("dbo.Claims", new[] { "insurerId" });
             DropTable("dbo.Officers");
             DropTable("dbo.Reports");
             DropTable("dbo.RegisteredUsers");
-            DropTable("dbo.Insurers");
             DropTable("dbo.Insurances");
+            DropTable("dbo.Insurers");
             DropTable("dbo.Claims");
         }
     }

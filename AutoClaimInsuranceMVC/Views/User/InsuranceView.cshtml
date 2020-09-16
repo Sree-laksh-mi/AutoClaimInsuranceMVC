@@ -1,0 +1,74 @@
+﻿@model IEnumerable<AutoClaimInsuranceMVC.Models.Insurance>
+
+@{
+    ViewBag.Title = "InsuranceView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>InsuranceView</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.coverage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.startDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.endDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vehilceRegistrationNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.chassisNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valueInsured)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.insurer.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.coverage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.startDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.endDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vehilceRegistrationNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.chassisNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valueInsured)
+        </td>
+        <td>
+            @Html.ActionLink("Claim", "Claim", new { policyNumber=item.policyNumber })
+        </td>
+    </tr>
+}
+
+</table>

@@ -135,9 +135,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009141518047_newdb.cs" />
-    <Compile Include="Migrations\202009141518047_newdb.designer.cs">
-      <DependentUpon>202009141518047_newdb.cs</DependentUpon>
+    <Compile Include="Migrations\202009151616471_changes.cs" />
+    <Compile Include="Migrations\202009151616471_changes.designer.cs">
+      <DependentUpon>202009151616471_changes.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoClaimContext.cs" />
@@ -150,6 +150,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\2.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -158,6 +159,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Untitled.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -299,6 +301,8 @@
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Officer\OfficerLogin.cshtml" />
+    <Content Include="Views\User\InsuranceView.cshtml" />
+    <Content Include="Views\User\Claim.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -315,8 +319,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009141518047_newdb.resx">
-      <DependentUpon>202009141518047_newdb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009151616471_changes.resx">
+      <DependentUpon>202009151616471_changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,15 +9,20 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 using System.Web.Security;
+using System.Runtime.Remoting.Messaging;
+using System.Data.Entity;
+using System.Web.UI.WebControls;
 
 namespace AutoClaimInsuranceMVC.Controllers
 {
     public class UserController : Controller
     {
         AutoClaimContext db = new AutoClaimContext();
+
         // GET: User
         public ActionResult Register()
         {
+
             return View();
         }
 
@@ -26,8 +31,8 @@ namespace AutoClaimInsuranceMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "insurerId,userId,password,confirmPassword")] RegisteredUser user)
         {
-            user.password = encrypt(user.password);
-            user.confirmPassword = encrypt(user.confirmPassword);
+            user.password = Encrypt(user.password);
+            user.confirmPassword = Encrypt(user.confirmPassword);
             var check = db.registeredUsers.Find(user.userId);
             if (check == null)
             {
@@ -54,12 +59,13 @@ namespace AutoClaimInsuranceMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(RegisteredUser user)
         {
-            user.password = encrypt(user.password);
+            user.password = Encrypt(user.password);
             var userobject = db.registeredUsers.Where(a => a.userId.Equals(user.userId) && a.password.Equals(user.password)).FirstOrDefault();
             if (userobject != null)
             {
                 FormsAuthentication.SetAuthCookie(user.userId, false);
                 Session["UserId"] = userobject.userId.ToString();
+                return RedirectToAction("InsuranceView");
             }
             else
             {
@@ -68,7 +74,7 @@ namespace AutoClaimInsuranceMVC.Controllers
 
             return View(user);
         }
-        public static string encrypt(string clearText)
+        public static string Encrypt(string clearText)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
@@ -89,5 +95,125 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return clearText;
         }
+       
+        [Authorize]
+        [HttpGet]
+        public ActionResult InsuranceView()
+        {
+
+            string userId = (string)Session["userId"];
+            var user = db.registeredUsers.Where(c => c.userId.Equals(userId)).FirstOrDefault();
+
+            var insurances = db.Insurances.Where(c => c.insurerId.Equals(user.insurerId)).ToList();
+            if (insurances != null)
+            {
+                return View(insurances);
+            }
+            else
+            {
+                ViewBag.Error = "No isurances";
+            }
+            return View();
+        }
+        [Authorize]
+        public ActionResult Claim(string policyNumber)
+        {
+            Session["policyNumber"] = policyNumber;
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Claim([Bind(Include = "dateAndTime,policeCase,firNumber,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense,HttpPostedFileBase fileRc)
+        {
+
+            string policyNumber = Session["policyNumber"].ToString();
+            var insure = db.Insurances.Where(c => c.policyNumber.Equals(policyNumber)).FirstOrDefault();
+            DateTime lastDate = insure.endDate;
+            int value = DateTime.Compare(DateTime.Now, lastDate);
+            if (value < 0)
+            {
+                string userId = (string)Session["userId"];
+                var user = db.registeredUsers.Where(c => c.userId.Equals(userId)).FirstOrDefault();
+                string insurerId = user.insurerId;
+                string pathLicense = "";
+                string pathRc = "";
+                try
+                {
+                    if (fileLicense.ContentLength > 0)
+                    {
+                        string fileName = Path.GetFileName(fileLicense.FileName);
+                        string FileExtension = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower();
+                        if (FileExtension == "pdf")
+                        {
+                            fileName = claim.policyNumber + "Licence";
+                            pathLicense = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                            fileLicense.SaveAs(pathLicense);
+                            ViewBag.Message = "File Uploaded Successfully!!";
+                            claim.licenseCopy = pathLicense;
+                        }
+                        else
+                        {
+                            ViewBag.Message = "Select a PDF file";
+                            claim.licenseCopy = null;
+                        }
+                    }
+                }
+                catch
+                   {
+                    ModelState.AddModelError("", "File Upload Failed");
+                   }
+              
+                    if (fileRc.ContentLength > 0)
+                    {
+                        string fileName = Path.GetFileName(fileRc.FileName);
+                        string FileExtension = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower();
+                        if (FileExtension == "pdf")
+                        {
+                            fileName = claim.policyNumber + "RC";
+                            pathRc = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                            fileRc.SaveAs(pathRc);
+                            ViewBag.Message_two = "File Uploaded Successfully!!";
+                            claim.rcCopy = pathRc;
+                        }
+                        else
+                        {
+                            ViewBag.Message_two = "Select a PDF file";
+                            claim.rcCopy = null;
+                        }
+                    }
+                
+                   else
+                   {
+                    ModelState.AddModelError("", "File Upload Failed");
+                   }
+                  
+                if (claim.licenseCopy != null && claim.rcCopy != null)
+                {
+                    var Claim = new Claim()
+                    {
+                        insurerId = insurerId,
+                        MailID = userId,
+                        policyNumber = policyNumber,
+                        dateAndTime = claim.dateAndTime,
+                        policeCase = claim.policeCase,
+                        firNumber = claim.firNumber,
+                        licenseCopy = pathLicense,
+                        rcCopy = pathRc,
+                        status = "claimed",
+                        claimDate = DateTime.Now
+                    };
+                    db.Claims.Add(Claim);
+                    db.SaveChanges();
+                    return View();
+                }
+                else
+                    return View();
+            }
+            else
+                ModelState.AddModelError("", "Sorry your insurance date has expired");
+            return View();
+        }
     }
-}
+ }

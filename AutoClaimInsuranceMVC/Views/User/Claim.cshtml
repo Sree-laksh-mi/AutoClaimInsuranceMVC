@@ -1,0 +1,75 @@
+﻿@model AutoClaimInsuranceMVC.Models.Claim
+
+@{
+    ViewBag.Title = "Claim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Claim</h2>
+
+
+@using (Html.BeginForm("Claim", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Claim</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dateAndTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dateAndTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.dateAndTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.policeCase, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+         <h7>Yes</h7>@Html.RadioButtonFor(m => m.policeCase, "Yes", new { htmlAttributes = new { @class = "form-control" } })
+         <h7>No</h7> @Html.RadioButtonFor(m => m.policeCase, "No", new { htmlAttributes = new { @class = "form-control" } })
+           
+            @Html.ValidationMessageFor(model => model.policeCase, "", new { @class = "text-danger" })
+        </div>
+    </div>
+   
+    <div class="form-group">
+        @Html.LabelFor(model => model.firNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.firNumber, "null", new { htmlAttributes = new { @class = "form-control", @placeholder = "Null" } })
+            @Html.ValidationMessageFor(model => model.firNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+            
+
+    <div>
+       Copy Of License @Html.TextBox("fileLicense", "", new { type = "file" }) <br />
+        @ViewBag.Message
+    </div>
+
+    <div>
+       Copy of RC   @Html.TextBox("fileRc", "", new { type = "file" }) <br />
+        @ViewBag.Message_two
+    </div>
+
+
+   
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

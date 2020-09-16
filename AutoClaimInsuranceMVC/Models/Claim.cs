@@ -18,7 +18,7 @@ namespace AutoClaimInsuranceMVC.Models
         [Required(ErrorMessage = "MailId Required")]
         public string MailID { get; set; }
         [Required(ErrorMessage = "Policy Number Required")]
-        public int policyNumber { get; set; }
+        public string policyNumber { get; set; }
         [Required(ErrorMessage = "Date and Time Required")]
         [DataType(DataType.DateTime)]
         public DateTime dateAndTime { get; set; }
@@ -38,7 +38,7 @@ namespace AutoClaimInsuranceMVC.Models
 
 
         public virtual Insurer insurer { get; set; }
-        public virtual Insurance insurance { get; set; }
+        
 
         public virtual ICollection<Report> Reports { get; set; }
     }

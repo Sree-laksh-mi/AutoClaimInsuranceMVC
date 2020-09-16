@@ -33,7 +33,7 @@ namespace AutoClaimInsuranceMVC.Models
 
         public virtual Insurer insurer { get; set; }
 
-
+      
 
     }
 }
