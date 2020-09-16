@@ -130,7 +130,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Claim([Bind(Include = "dateAndTime,policeCase,firNumber,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense,HttpPostedFileBase fileRc)
+        public ActionResult Claim([Bind(Include = "dateAndTime,policeCase,reason,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense,HttpPostedFileBase fileRc)
         {
 
             string policyNumber = Session["policyNumber"].ToString();
@@ -203,7 +203,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                         policyNumber = policyNumber,
                         dateAndTime = claim.dateAndTime,
                         policeCase = claim.policeCase,
-                        firNumber = claim.firNumber,
+                        reason = claim.reason,
                         licenseCopy = pathLicense,
                         rcCopy = pathRc,
                         status = "claimed",

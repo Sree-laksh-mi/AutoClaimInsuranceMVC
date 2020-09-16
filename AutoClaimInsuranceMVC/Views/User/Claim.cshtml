@@ -26,38 +26,38 @@
             @Html.ValidationMessageFor(model => model.dateAndTime, "", new { @class = "text-danger" })
         </div>
     </div>
-
+   
     <div class="form-group">
-        @Html.LabelFor(model => model.policeCase, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.policeCase, htmlAttributes: new { @class = "control-label col-md-2 " })
         <div class="col-md-10">
-         <h7>Yes</h7>@Html.RadioButtonFor(m => m.policeCase, "Yes", new { htmlAttributes = new { @class = "form-control" } })
-         <h7>No</h7> @Html.RadioButtonFor(m => m.policeCase, "No", new { htmlAttributes = new { @class = "form-control" } })
-           
+            <h7>Yes</h7>@Html.RadioButtonFor(m => m.policeCase, "Yes", new { htmlAttributes = new { @class = "policecase" } })
+            <h7>No</h7> @Html.RadioButtonFor(m => m.policeCase, "No", new { htmlAttributes = new { @class = "policecase"} })
+
             @Html.ValidationMessageFor(model => model.policeCase, "", new { @class = "text-danger" })
         </div>
     </div>
-   
-    <div class="form-group">
-        @Html.LabelFor(model => model.firNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    <div class="form-group optional-field">
+        @Html.LabelFor(model => model.reason, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.firNumber, "null", new { htmlAttributes = new { @class = "form-control", @placeholder = "Null" } })
-            @Html.ValidationMessageFor(model => model.firNumber, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.reason, "null", new { htmlAttributes = new { @class = "form-control", @placeholder = " Enter Null if no police case" } })
+            @Html.ValidationMessageFor(model => model.reason, "", new { @class = "text-danger" })
         </div>
     </div>
-            
+
 
     <div>
-       Copy Of License @Html.TextBox("fileLicense", "", new { type = "file" }) <br />
+        Copy Of License @Html.TextBox("fileLicense", "", new { type = "file" }) <br />
         @ViewBag.Message
     </div>
 
     <div>
-       Copy of RC   @Html.TextBox("fileRc", "", new { type = "file" }) <br />
+        Copy of RC   @Html.TextBox("fileRc", "", new { type = "file" }) <br />
         @ViewBag.Message_two
     </div>
 
 
-   
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />

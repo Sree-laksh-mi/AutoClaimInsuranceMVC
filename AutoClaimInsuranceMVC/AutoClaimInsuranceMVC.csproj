@@ -140,6 +140,10 @@
     <Compile Include="Migrations\202009151616471_changes.designer.cs">
       <DependentUpon>202009151616471_changes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009161738430_reason.cs" />
+    <Compile Include="Migrations\202009161738430_reason.designer.cs">
+      <DependentUpon>202009161738430_reason.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoClaimContext.cs" />
     <Compile Include="Models\Claim.cs" />
@@ -161,6 +165,8 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\icon.png" />
+    <Content Include="Content\ORU SERVICES.png" />
+    <Content Include="Content\service final.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
@@ -329,6 +335,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009151616471_changes.resx">
       <DependentUpon>202009151616471_changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009161738430_reason.resx">
+      <DependentUpon>202009161738430_reason.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

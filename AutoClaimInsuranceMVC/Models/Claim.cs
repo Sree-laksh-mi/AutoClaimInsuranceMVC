@@ -19,13 +19,13 @@ namespace AutoClaimInsuranceMVC.Models
         public string MailID { get; set; }
         [Required(ErrorMessage = "Policy Number Required")]
         public string policyNumber { get; set; }
+        [Required]
+        public string reason{ get; set; }
         [Required(ErrorMessage = "Date and Time Required")]
         [DataType(DataType.DateTime)]
         public DateTime dateAndTime { get; set; }
         [Required(ErrorMessage = "Please select Yes or No")]
         public string policeCase { get; set; }
-        [Required]
-        public string firNumber { get; set; }
         [Required(ErrorMessage = "No file selected")]
         public string licenseCopy { get; set; }
         [Required(ErrorMessage = "No file selected")]

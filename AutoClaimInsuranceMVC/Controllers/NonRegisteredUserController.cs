@@ -23,7 +23,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Index([Bind(Include = "insurerId,mailID,policyNumber,dateAndTime,policeCase,firNumber,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense, HttpPostedFileBase fileRc)
+        public ActionResult Index([Bind(Include = "insurerId,mailID,policyNumber,dateAndTime,policeCase,reason,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense, HttpPostedFileBase fileRc)
         {
                 string pathLicense = "";
                 string pathRc = "";
@@ -86,7 +86,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                         policyNumber = claim.policyNumber,
                         dateAndTime = claim.dateAndTime,
                         policeCase = claim.policeCase,
-                        firNumber = claim.firNumber,
+                        reason = claim.reason,
                         licenseCopy = pathLicense,
                         rcCopy = pathRc,
                         status = "not claimed",
