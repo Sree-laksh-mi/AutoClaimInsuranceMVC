@@ -19,6 +19,11 @@ namespace AutoClaimInsuranceMVC.Controllers
     {
         AutoClaimContext db = new AutoClaimContext();
 
+        public ActionResult HomePage()
+        {
+            return View();
+        }
+
         // GET: User
         public ActionResult Register()
         {

@@ -69,7 +69,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpGet]
         public ActionResult ClaimOfficerPage()
         {
             var claim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
@@ -85,7 +85,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
 
         [Authorize]
-        [HttpPost]
+        [HttpGet]
         public ActionResult InsuranceOfficerPage()
         {
             var claim = db.Claims.Where(c => c.status.Equals("not claimed")).ToList();
