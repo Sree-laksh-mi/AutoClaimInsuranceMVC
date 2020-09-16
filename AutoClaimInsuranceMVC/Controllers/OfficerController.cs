@@ -36,7 +36,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 else if (user.role == "Claim officer")
                     return RedirectToAction("ClaimOfficerPage");
                 else
-                    return RedirectToAction("Assessor", "Claim");
+                    return RedirectToAction("AssessorPage");
 
             }
             else
@@ -99,6 +99,24 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return View();
         }
+        [Authorize]
+        [HttpGet]
+        public ActionResult AssessorPage()
+        {
+            string OfficerId = Session["OfficerId"].ToString();
+            var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) &&( c.status.Equals("completed"))).ToList();
+            if (reports != null)
+            {
+                return View(reports);
+            }
+            else
+            {
+                ViewBag.Error = "Not valid";
+            }
+            return View();
+            
+
+        }
 
 
 
@@ -122,7 +140,8 @@ namespace AutoClaimInsuranceMVC.Controllers
 
 
 
-         
+
+
 
 
 
