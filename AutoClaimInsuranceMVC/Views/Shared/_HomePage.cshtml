@@ -22,38 +22,39 @@
     </script>
     <style>
         #container {
-            float:unset;
+            display :flex;
             width: 70%;
             min-width: 1000px;
-            margin: auto;
+            margin: 100px auto;
+            justify-content:space-between;
+            flex-wrap:wrap;
         }
 
         #left {
-            float: left;
+            
             width: 20%;
             background: #ccc;
         }
 
-        #content {
-            float: left;
-            width: 60%;
-            background: #ff0;
-        }
 
         #right {
-            float: right;
+            
             width: 20%;
             background: #ccc;
+        }
+
+        .card{
+            background-color:rgba(0,0,0,0)!important;
         }
     </style>
 </head>
 <body style="background-image:url('/Content/bg.jpg');background-size:cover;">
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top py-lg-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top px-0 py-0" style="height :70px;">
         <div class="navbar-brand">
             <div class="logo-image">
                 <img src="~/Content/icon.png"
-                     width="300" height="80" alt="" style="opacity:0.8">
+                     alt="" style="opacity:0.8; height:70px; ">
             </div>
            
         </div>
@@ -72,7 +73,7 @@
     
        
         <div id="container">
-            <div id="left" class="card" style="width: 18rem;">
+            <div id="left" class="card outline outline-danger "  style="width: 18rem;">
                 <img class="card-img-top" src="..." alt="Card image cap" >
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
