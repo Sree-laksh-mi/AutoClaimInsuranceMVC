@@ -8,7 +8,8 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
+using System.Web.UI.WebControls;
+using System.Data.Entity;
 namespace AutoClaimInsuranceMVC.Controllers
 {
     public class OfficerController : Controller
@@ -23,7 +24,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult OfficerLogin(Officer officer)
         {
-            officer.password =encrypt(officer.password);
+            officer.password = encrypt(officer.password);
             var user = db.Officers.Where(a => a.officerId.Equals(officer.officerId) && a.password.Equals(officer.password)).FirstOrDefault();
             if (user != null)
             {
@@ -89,7 +90,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         public ActionResult InsuranceOfficerPage()
         {
             var claim = db.Claims.Where(c => c.status.Equals("not claimed")).ToList();
-            if (claim !=null)
+            if (claim != null)
             {
                 return View(claim);
             }
@@ -104,7 +105,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         public ActionResult AssessorPage()
         {
             string OfficerId = Session["OfficerId"].ToString();
-            var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) &&( c.status.Equals("completed"))).ToList();
+            var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) && (c.status.Equals("completed"))).ToList();
             if (reports != null)
             {
                 return View(reports);
@@ -114,36 +115,39 @@ namespace AutoClaimInsuranceMVC.Controllers
                 ViewBag.Error = "Not valid";
             }
             return View();
-            
+
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        [Authorize]
+        public ActionResult Search(int claimId, string policyNumber)
+        {
+            string claimid = claimId.ToString();
+            ViewBag.policyNumber = policyNumber;
+            var insurance = db.Insurances.Where(c => c.policyNumber.Equals(policyNumber)).FirstOrDefault();
+            if (insurance != null)
+            {
+                ViewBag.Exists = "Policy Exists";
+                ViewBag.claimId = claimid;
+                return View(insurance);
+            }
+            else
+            {
+                ViewBag.claimId = claimid;
+                ViewBag.Exists = "No valid policy number for this insurer ";
+                return View();
+            }
+        }
+        [Authorize]
+        public ActionResult Accept(string claimId)
+        {
+            int claimid = int.Parse(claimId);
+            var claim = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
+            claim.status = "claimed";
+            db.Entry(claim).State = EntityState.Modified;
+            db.SaveChanges();
+            ViewBag.status = "Accepted";
+            return View();
+        }
 
 
     }

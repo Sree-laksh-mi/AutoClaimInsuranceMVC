@@ -130,6 +130,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NonRegisteredUserController.cs" />
     <Compile Include="Controllers\OfficerController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -308,6 +309,8 @@
     <Content Include="Views\Officer\AssessorPage.cshtml" />
     <Content Include="Views\Shared\_HomePage.cshtml" />
     <Content Include="Views\User\HomePage.cshtml" />
+    <Content Include="Views\Officer\Search.cshtml" />
+    <Content Include="Views\NonRegisteredUser\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

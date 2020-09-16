@@ -1,0 +1,89 @@
+﻿@model AutoClaimInsuranceMVC.Models.Insurance
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_HomePage.cshtml";
+}
+
+<h2>Search</h2>
+
+<div>
+    <h4>Insurance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.insurer.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.coverage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.coverage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.vehilceRegistrationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vehilceRegistrationNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chassisNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chassisNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valueInsured)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valueInsured)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @ViewBag.Exists
+</div>
+<p>
+    @Html.ActionLink("Accept", "Accept", new { claimId = ViewBag.claimId }) @ViewBag.status
+    <br />
+    @Html.ActionLink("Reject", "Reject", new { claimId = ViewBag.claimId }) 
+    <br />
+    @Html.ActionLink("Back", "InsuranceOfficerPage")
+</p>
