@@ -32,5 +32,13 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return View();
         }
+        public ActionResult ClaimDetails(string claimId)
+        {
+            int claimid = int.Parse(claimId);
+            var claimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
+            return View(claimDetails);
+
+
+        }
     }
 }

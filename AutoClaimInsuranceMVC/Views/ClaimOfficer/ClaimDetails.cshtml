@@ -1,0 +1,99 @@
+﻿@model AutoClaimInsuranceMVC.Models.Claim
+
+@{
+    ViewBag.Title = "ClaimDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ClaimDetails</h2>
+
+<div>
+    <h4>Claim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.insurer.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.policyNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policyNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateAndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateAndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.policeCase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policeCase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.licenseCopy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licenseCopy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rcCopy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rcCopy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.claimDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.claimDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.claimId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -310,6 +310,7 @@
     <Content Include="Views\NonRegisteredUser\Index.cshtml" />
     <Content Include="Views\ClaimOfficer\ClaimProgress.cshtml" />
     <Content Include="Views\ClaimOfficer\ClaimOfficerPage.cshtml" />
+    <Content Include="Views\ClaimOfficer\ClaimDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
