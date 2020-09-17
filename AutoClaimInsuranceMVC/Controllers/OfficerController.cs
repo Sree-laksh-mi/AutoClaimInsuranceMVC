@@ -35,7 +35,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 if (user.role == "Insurance officer")
                     return RedirectToAction("InsuranceOfficerPage");
                 else if (user.role == "Claim officer")
-                    return RedirectToAction("ClaimOfficerPage");
+                    return RedirectToAction("ClaimOfficerPage","ClaimOfficer");
                 else
                     return RedirectToAction("AssessorPage");
 
@@ -67,22 +67,6 @@ namespace AutoClaimInsuranceMVC.Controllers
                 }
             }
             return clearText;
-        }
-
-        [Authorize]
-        [HttpGet]
-        public ActionResult ClaimOfficerPage()
-        {
-            var claim = db.Claims.Where(c => c.status.Equals("progress")).ToList();
-            if (claim != null)
-            {
-                return View(claim);
-            }
-            else
-            {
-                ViewBag.Error = "Claim not exists";
-            }
-            return View();
         }
 
         [Authorize]
