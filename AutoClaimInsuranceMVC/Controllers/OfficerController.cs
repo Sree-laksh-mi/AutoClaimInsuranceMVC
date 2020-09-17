@@ -73,7 +73,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [HttpGet]
         public ActionResult ClaimOfficerPage()
         {
-            var claim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
+            var claim = db.Claims.Where(c => c.status.Equals("progress")).ToList();
             if (claim != null)
             {
                 return View(claim);
@@ -89,7 +89,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [HttpGet]
         public ActionResult InsuranceOfficerPage()
         {
-            var claim = db.Claims.Where(c => c.status.Equals("not claimed")).ToList();
+            var claim = db.Claims.Where(c => c.status.Equals("pending")).ToList();
             if (claim != null)
             {
                 return View(claim);
@@ -119,19 +119,31 @@ namespace AutoClaimInsuranceMVC.Controllers
 
         }
         [Authorize]
-        public ActionResult Search(int claimId, string policyNumber)
+        public ActionResult Verify(int claimId, string policyNumber)
         {
             string claimid = claimId.ToString();
             ViewBag.policyNumber = policyNumber;
             var insurance = db.Insurances.Where(c => c.policyNumber.Equals(policyNumber)).FirstOrDefault();
             if (insurance != null)
             {
-                ViewBag.Exists = "Policy Exists";
-                ViewBag.claimId = claimid;
-                return View(insurance);
+                DateTime lastDate = insurance.endDate;
+                int value = DateTime.Compare(DateTime.Now, lastDate);
+                if (value < 0)
+                {
+                    ViewBag.Exists = "Policy Exists";
+                    ViewBag.claimId = claimid;
+                    return View(insurance);
+                }
+                else
+                {
+                    ViewBag.Exists = " Policy has expired";
+                    ViewBag.claimId = claimid;
+                    return View();
+                }
             }
             else
             {
+                ViewBag.check = "null";
                 ViewBag.claimId = claimid;
                 ViewBag.Exists = "No valid policy number for this insurer ";
                 return View();
@@ -142,13 +154,32 @@ namespace AutoClaimInsuranceMVC.Controllers
         {
             int claimid = int.Parse(claimId);
             var claim = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
-            claim.status = "claimed";
+            claim.status = "progress";
             db.Entry(claim).State = EntityState.Modified;
             db.SaveChanges();
             ViewBag.status = "Accepted";
-            return View();
+            return RedirectToAction("InsuranceOfficerPage");
         }
 
+        public ActionResult RejectInsurance(string claimId)
+        {
+            int claimid = int.Parse(claimId);
+            var claim = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
+            claim.status = "rejected";
+            db.Entry(claim).State = EntityState.Modified;
+            db.SaveChanges();
+            ViewBag.status = "Rejected";
+            return RedirectToAction("InsuranceOfficerPage");
+        }
+
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("OfficerLogin");
+        }
 
     }
 }

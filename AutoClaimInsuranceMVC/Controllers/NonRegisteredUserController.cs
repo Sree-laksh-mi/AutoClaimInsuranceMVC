@@ -89,7 +89,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                         reason = claim.reason,
                         licenseCopy = pathLicense,
                         rcCopy = pathRc,
-                        status = "not claimed",
+                        status = "pending",
                         claimDate = DateTime.Now
                     };
                     db.Claims.Add(Claim);

@@ -39,36 +39,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.insurer.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.coverage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.vehilceRegistrationNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.chassisNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.valueInsured)
-        </td>
-        <td>
-            @Html.ActionLink("Claim", "Claim", new { policyNumber=item.policyNumber })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.insurer.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coverage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vehilceRegistrationNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.chassisNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valueInsured)
+            </td>
+            <td>
+                @Html.ActionLink("Claim", "Claim", new { policyNumber = item.policyNumber })
+            </td>
+        </tr>
+    }
 
 </table>
+@Html.ActionLink("Logout", "Logout")

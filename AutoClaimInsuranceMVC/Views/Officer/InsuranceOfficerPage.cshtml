@@ -6,9 +6,7 @@
 
 <h2>InsuranceOfficerPage</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
@@ -30,56 +28,41 @@
             @Html.DisplayNameFor(model => model.reason)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.licenseCopy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.rcCopy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.claimDate)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.insurer.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MailID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.policyNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateAndTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.policeCase)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.reason)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.licenseCopy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.rcCopy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.claimDate)
-        </td>
-        <td>
-            @Html.ActionLink("Search", "Search", new { claimId=item.claimId,policyNumber=item.policyNumber }) 
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.insurer.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MailID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policyNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.policeCase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.claimDate)
+            </td>
+            <td>
+                @Html.ActionLink("Verify", "Verify", new { claimId = item.claimId, policyNumber = item.policyNumber })
+            </td>
+        </tr>
+    }
 
 </table>
+
+

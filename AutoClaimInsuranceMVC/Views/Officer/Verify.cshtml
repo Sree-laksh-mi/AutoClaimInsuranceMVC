@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Search";
-    Layout = "~/Views/Shared/_HomePage.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Search</h2>
@@ -10,6 +10,8 @@
 <div>
     <h4>Insurance</h4>
     <hr />
+    @if (ViewBag.Exists == "Policy Exists")
+    {
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.insurer.firstName)
@@ -76,14 +78,17 @@
         </dd>
 
     </dl>
+    }
 </div>
 <div>
     @ViewBag.Exists
 </div>
 <p>
-    @Html.ActionLink("Accept", "Accept", new { claimId = ViewBag.claimId }) @ViewBag.status
-    <br />
-    @Html.ActionLink("Reject", "Reject", new { claimId = ViewBag.claimId }) 
+    @if (ViewBag.Exists == "Policy Exists")
+    {@Html.ActionLink("Accept", "Accept", new { claimId = ViewBag.claimId }) @ViewBag.status}
+    else {<br /> @ViewBag.status
+    @Html.ActionLink("Reject", "RejectInsurance", new { claimId = ViewBag.claimId })}
+    
     <br />
     @Html.ActionLink("Back", "InsuranceOfficerPage")
 </p>

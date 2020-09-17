@@ -206,7 +206,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                         reason = claim.reason,
                         licenseCopy = pathLicense,
                         rcCopy = pathRc,
-                        status = "claimed",
+                        status = "progress",
                         claimDate = DateTime.Now
                     };
                     db.Claims.Add(Claim);
@@ -219,6 +219,14 @@ namespace AutoClaimInsuranceMVC.Controllers
             else
                 ModelState.AddModelError("", "Sorry your insurance date has expired");
             return View();
+        }
+        [Authorize]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
     }
  }

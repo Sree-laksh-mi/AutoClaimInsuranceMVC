@@ -136,15 +136,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009151616471_changes.cs" />
-    <Compile Include="Migrations\202009151616471_changes.designer.cs">
-      <DependentUpon>202009151616471_changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009161738430_reason.cs" />
-    <Compile Include="Migrations\202009161738430_reason.designer.cs">
-      <DependentUpon>202009161738430_reason.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoClaimContext.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Insurance.cs" />
@@ -315,7 +306,7 @@
     <Content Include="Views\Officer\AssessorPage.cshtml" />
     <Content Include="Views\Shared\_HomePage.cshtml" />
     <Content Include="Views\User\HomePage.cshtml" />
-    <Content Include="Views\Officer\Search.cshtml" />
+    <Content Include="Views\Officer\Verify.cshtml" />
     <Content Include="Views\NonRegisteredUser\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -331,14 +322,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009151616471_changes.resx">
-      <DependentUpon>202009151616471_changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009161738430_reason.resx">
-      <DependentUpon>202009161738430_reason.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
