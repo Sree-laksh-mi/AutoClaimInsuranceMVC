@@ -36,9 +36,11 @@ namespace AutoClaimInsuranceMVC.Controllers
         {
             int claimid = int.Parse(claimId);
             var claimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
+            ViewBag.AssessorId = db.Officers.Where(o => o.role == "assessor").ToList();
             return View(claimDetails);
 
 
         }
+       
     }
 }
