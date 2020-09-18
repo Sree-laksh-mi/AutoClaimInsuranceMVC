@@ -7,58 +7,38 @@
 
 <h2>AssessorPage</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.claim.insurerId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Officer.firstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.status)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.content)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.reportDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.amount)
+            @Html.DisplayNameFor(model => model.status)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.claim.insurerId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Officer.firstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.reportDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.amount)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.reportId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.reportId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.reportId })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.claim.insurerId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reportDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+
+        @Html.ActionLink("Details", "AssessorDetails", "Assessor", new { reportid = item.reportId, claimid = item.claimId }, null)
+
+    </td>
+</tr>
 }
 
 </table>

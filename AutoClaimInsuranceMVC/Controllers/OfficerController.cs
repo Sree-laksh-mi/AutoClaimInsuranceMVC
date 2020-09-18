@@ -89,7 +89,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         public ActionResult AssessorPage()
         {
             string OfficerId = Session["OfficerId"].ToString();
-            var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) && (c.status.Equals("completed"))).ToList();
+            var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) && (c.status.Equals("pending"))).ToList();
             if (reports != null)
             {
                 return View(reports);

@@ -1,0 +1,57 @@
+﻿@model AutoClaimInsuranceMVC.Models.Claim
+
+@{
+    ViewBag.Title = "AssessorDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Claim</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.insurer.firstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.reason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.reason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateAndTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateAndTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.policeCase)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.policeCase)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.claimDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.claimDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Generate Report", "GenerateReport", new { claimid = Model.claimId,reportid=ViewBag.ReportId}) |
+    @Html.ActionLink("Back", "AssessorPage","Officer")
+</p>

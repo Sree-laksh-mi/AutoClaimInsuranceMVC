@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssessorController.cs" />
     <Compile Include="Controllers\ClaimOfficerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NonRegisteredUserController.cs" />
@@ -316,6 +317,7 @@
     <Content Include="Views\ClaimOfficer\ClaimProgress.cshtml" />
     <Content Include="Views\ClaimOfficer\ClaimOfficerPage.cshtml" />
     <Content Include="Views\ClaimOfficer\ClaimDetails.cshtml" />
+    <Content Include="Views\Assessor\AssessorDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
