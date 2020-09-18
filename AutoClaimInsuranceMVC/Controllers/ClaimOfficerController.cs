@@ -69,6 +69,37 @@ namespace AutoClaimInsuranceMVC.Controllers
 
             return RedirectToAction("ClaimProgress");
         }
-       
+        [HttpGet]
+        public ActionResult CompletedReport()
+        {
+            var completedreport = db.Reports.Where(c => c.status.Equals("completed")).ToList();
+            ViewBag.completedreport = completedreport;
+            return View(completedreport);
+        }
+        
+        [HttpGet]
+        public ActionResult AcceptedClaim()
+        {
+            var acceptedclaim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
+            ViewBag.acceptedclaim = acceptedclaim;
+            return View(acceptedclaim);
+        }
+        public ActionResult AcceptedClaimDetails(string claimId)
+        {
+            int claimid = int.Parse(claimId);
+            var acceptedClaimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
+            return View(acceptedClaimDetails);
+        }
+
+
+
+        
+
+
+
+
+
+
+
     }
 }

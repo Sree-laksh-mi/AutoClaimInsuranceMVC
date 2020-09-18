@@ -1,0 +1,61 @@
+﻿@model IEnumerable<AutoClaimInsuranceMVC.Models.Claim>
+
+@{
+    ViewBag.Title = "AcceptedClaim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AcceptedClaim</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.policyNumber)
+        </th>
+        
+        
+       
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.claimDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.insurer.firstName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.policyNumber)
+        </td>
+       
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.claimDate)
+        </td>
+        <td>
+           
+            @Html.ActionLink("Details", "AcceptedClaimDetails", new { id=item.claimId }) |
+            
+        </td>
+    </tr>
+}
+
+</table>
