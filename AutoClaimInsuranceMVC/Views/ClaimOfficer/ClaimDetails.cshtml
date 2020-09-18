@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "ClaimDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="~/Scripts/bootstrap.js"></script>
 }
 
 <h2>ClaimDetails</h2>
@@ -94,8 +95,21 @@
     </dl>
 </div>
 
+@foreach (var obj in ViewBag.Assessor)
+{
+    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab">@obj.firstName</a>
+}
+
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.claimId }) |
+
+    @using (Html.BeginForm("Assign", "ClaimOfficer", FormMethod.Post, new { @class = "form-inline" }))
+    {
+        @Html.TextBox("officerId","", new { @class = "form-control"})
+
+        @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
+        <button type="submit" class="btn btn-success btn-sm ml-2">Assign </button>
+    }
     @Html.ActionLink("Back to List", "Index")
 </p>
 

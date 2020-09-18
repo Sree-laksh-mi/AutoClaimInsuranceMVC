@@ -137,6 +137,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009180919543_newdb.cs" />
+    <Compile Include="Migrations\202009180919543_newdb.designer.cs">
+      <DependentUpon>202009180919543_newdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoClaimContext.cs" />
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Insurance.cs" />
@@ -325,6 +330,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009180919543_newdb.resx">
+      <DependentUpon>202009180919543_newdb.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

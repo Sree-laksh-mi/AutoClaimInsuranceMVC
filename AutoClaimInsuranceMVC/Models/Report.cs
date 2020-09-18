@@ -11,7 +11,7 @@ namespace AutoClaimInsuranceMVC.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public string reportId { get; set; }
+        public int reportId { get; set; }
         [Required]
         public string officerId { get; set; }
         [Required]
