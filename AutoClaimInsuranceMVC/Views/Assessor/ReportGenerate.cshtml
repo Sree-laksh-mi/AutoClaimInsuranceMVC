@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "ReportGenerate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ReportGenerate</h2>
+@using (Html.BeginForm("CreateReport", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
+{
+    @Html.AntiForgeryToken()
+<div class="form-group">
+    <label for="DamagedPart"> Percentage of Damage </label>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="Glass">Glass</label>
+            <div class="col-md-10">
+                @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Plastic">Palstic</label>
+            <div class="col-md-10">
+                @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="OuterBody">OuterBody</label>
+            <div class="col-md-10">
+                @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Interior">Interior</label>
+            <div class="col-md-10">
+                @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <label for="inputyear">Age of Vehicle</label>
+        @Html.TextBox("AgeofVehicle", "", new { @class = "form-control" })
+    </div>
+
+    @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
+    @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
+</div>
+    <button type="submit" class="btn btn-success btn-sm ml-2">Submit</button>
+}
