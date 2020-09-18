@@ -318,6 +318,7 @@
     <Content Include="Views\ClaimOfficer\ClaimDetails.cshtml" />
     <Content Include="Views\ClaimOfficer\CompletedReport.cshtml" />
     <Content Include="Views\ClaimOfficer\AcceptedClaim.cshtml" />
+    <Content Include="Views\ClaimOfficer\AcceptedClaimDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
