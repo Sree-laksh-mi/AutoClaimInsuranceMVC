@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "GenerteReport";
+}
+
+<h2>GenerteReport</h2>
+<form>
+    <div class=" form-row">
+        <div class="form-group col-md-6">
+            <label for="inputNature">Nature of Damage</label>
+            <select id="inputNature" class="form-control">
+                <option selected>Plastic</option>
+                <option>Glass</option>
+                <option>Outerbody</option>
+                <option>Interior parts</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputpercentage">Percentage of Damage</label>
+            <input type="number" class="form-control" id="inputpercentage">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class=" form-group col-md-4">
+            <label for="inputyear">Age of Vehicle</label>
+            <input type="number" class="form-control" id="inputyear" />
+        </div>
+    </div>
+    @using (Html.BeginForm("GenerateReport", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
+    {
+     @Html.DropDownList("Nature of Damage")
+        <br/>
+       
+        @Html.TextBox("Percentage of Damage")
+        <br/>
+        @Html.TextBox("Age of Vehicle")
+        <button type="submit" class="btn btn-success btn-sm ml-2">Submit</button>
+    }
+   
+</form>

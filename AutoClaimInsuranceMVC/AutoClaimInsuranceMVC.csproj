@@ -321,6 +321,7 @@
     <Content Include="Views\ClaimOfficer\AcceptedClaim.cshtml" />
     <Content Include="Views\ClaimOfficer\AcceptedClaimDetails.cshtml" />
     <Content Include="Views\Assessor\AssessorDetails.cshtml" />
+    <Content Include="Views\Assessor\GenerteReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

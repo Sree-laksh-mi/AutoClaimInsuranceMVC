@@ -23,6 +23,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         public ActionResult GenerteReport(string claimId, string reportID)
         {
 
+
         }
     }
 }
