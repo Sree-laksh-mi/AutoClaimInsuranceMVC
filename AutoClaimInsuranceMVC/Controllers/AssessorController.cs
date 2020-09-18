@@ -19,10 +19,10 @@ namespace AutoClaimInsuranceMVC.Controllers
             var claim = db.Claims.Where(c => c.claimId == claimID).FirstOrDefault();
             return View(claim);
         }
+        [Authorize]
+        public ActionResult GenerteReport(string claimId, string reportID)
+        {
 
-        //public ActionResult GenerteReport(string claimId,string reportID)
-        //{
-
-        //}
+        }
     }
 }

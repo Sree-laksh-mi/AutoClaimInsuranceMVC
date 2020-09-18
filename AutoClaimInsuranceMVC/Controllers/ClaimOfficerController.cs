@@ -14,6 +14,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         // GET: ClaimOfficer
         //[Authorize]
         [HttpGet]
+        [Authorize]
         public ActionResult ClaimOfficerPage()
         {
             var progress = db.Claims.Where(p => p.status.Equals("progress")).Count();
@@ -24,7 +25,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             ViewBag.claimed = claimed;
             return View();
         }
-
+        [Authorize]
         public ActionResult ClaimProgress()
         {
             var claim = db.Claims.Where(c => c.status.Equals("progress")).ToList();
@@ -38,6 +39,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return View();
         }
+        [Authorize]
         public ActionResult ClaimDetails(string claimId)
         {
             int claimid = int.Parse(claimId);
@@ -49,6 +51,7 @@ namespace AutoClaimInsuranceMVC.Controllers
 
         }
         [HttpPost]
+        [Authorize]
         public ActionResult Assign( string officerId,string claimId)
         {
             
@@ -70,6 +73,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             return RedirectToAction("ClaimProgress");
         }
         [HttpGet]
+        [Authorize]
         public ActionResult CompletedReport()
         {
             var completedreport = db.Reports.Where(c => c.status.Equals("completed")).ToList();
@@ -78,27 +82,20 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
         
         [HttpGet]
+        [Authorize]
         public ActionResult AcceptedClaim()
         {
             var acceptedclaim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
             ViewBag.acceptedclaim = acceptedclaim;
             return View(acceptedclaim);
         }
+        [Authorize]
         public ActionResult AcceptedClaimDetails(string claimId)
         {
             int claimid = int.Parse(claimId);
             var acceptedClaimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
             return View(acceptedClaimDetails);
         }
-
-
-
-        
-
-
-
-
-
 
 
     }
