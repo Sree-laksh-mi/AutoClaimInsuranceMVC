@@ -153,6 +153,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AboutUs.png" />
+    <Content Include="Content\landing.png" />
+    <Content Include="Content\Linkup.png" />
     <Content Include="Content\bg.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -163,8 +166,9 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\icon.png" />
-    <Content Include="Content\ORU SERVICES.png" />
-    <Content Include="Content\service final.png" />
+    <Content Include="Content\Logo.png" />
+    <Content Include="Content\link up.png" />
+    <Content Include="Content\OUR SERVICES.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />

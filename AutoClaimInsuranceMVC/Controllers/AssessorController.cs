@@ -68,7 +68,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 report.status = "completed";
                 db.Entry(report).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("AssessorPage","Offficer");
+                return RedirectToAction("AssessorPage","Officer");
             } 
            
         }

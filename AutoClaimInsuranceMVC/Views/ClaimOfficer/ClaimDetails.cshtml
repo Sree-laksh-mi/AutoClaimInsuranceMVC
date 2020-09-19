@@ -94,10 +94,19 @@
 
     </dl>
 </div>
-
+<script>
+    function Assign(officerId, claimId) {
+        alert("hello")
+        $.post("../ClaimOfficer/Assign", { officerId, claimId }, function (response, status) {
+            alert("Assigned Successfully")
+            if (status == "success")
+                location.href="/ClaimOfficer/ClaimProgress"
+        })
+    }
+    </script>
 @foreach (var obj in ViewBag.Assessor)
 {
-    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab">@obj.firstName</a>
+    <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)"  > @obj.firstName @obj.officerId <span class="badge badge-primary badge-pill">14</span></button>
 }
 
 
