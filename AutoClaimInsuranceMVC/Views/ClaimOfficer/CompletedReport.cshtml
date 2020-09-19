@@ -50,7 +50,7 @@
         </td>
         <td>
             @Html.ActionLink("Accept", "AcceptClaim", new { claimid=item.claimId,reportId=item.reportId}) 
-            @Html.ActionLink("Reject", "Details", new { id=item.reportId }) |
+            @Html.ActionLink("Reject", "RejectClaim", new { claimid = item.claimId, reportId = item.reportId }) |
         </td>
     </tr>
 }

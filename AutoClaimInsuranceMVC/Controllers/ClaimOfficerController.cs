@@ -97,12 +97,30 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
         [HttpGet]
         [Authorize]
+        public ActionResult RejectClaim(string claimId, string reportId)
+        {
+            int claimID = int.Parse(claimId);
+            var rejectclaim = db.Claims.Where(c => c.claimId==claimID).FirstOrDefault();
+            rejectclaim.status = "rejected";
+            db.Entry(rejectclaim).State = EntityState.Modified;
+            db.SaveChanges();
+            int reportID = int.Parse(reportId);
+            var report = db.Reports.Where(r => r.reportId == reportID).FirstOrDefault();
+            report.status = "rejected";
+            db.Entry(report).State = EntityState.Modified;
+            db.SaveChanges();
+            return View("CompleteReport");
+        }
+        [HttpGet]
+        [Authorize]
         public ActionResult AcceptedClaim()
         {
             var acceptedclaim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
             ViewBag.acceptedclaim = acceptedclaim;
             return View(acceptedclaim);
         }
+
+      
         [Authorize]
         public ActionResult AcceptedClaimDetails(string claimId)
         {
