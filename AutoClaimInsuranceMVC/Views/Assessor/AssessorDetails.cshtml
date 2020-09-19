@@ -51,7 +51,20 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Generate Report", "ReportGenerate", new { claimid = Model.claimId,reportid=ViewBag.ReportId}) |
-    @Html.ActionLink("Back", "AssessorPage","Officer")
-</p>
+@using (Html.BeginForm("ReportGenerate", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="Glass">Damage</label>
+        <div class="col-md-10">
+            <h7>Complete</h7>@Html.RadioButton("damage", "complete", new { htmlAttributes = new { @class = "form-control" } })
+            <h7>Partial</h7>@Html.RadioButton("damage", "partial", new { htmlAttributes = new { @class = "form-control" } })
+            <h7>No Damage</h7>@Html.RadioButton("damage", "noDamage", new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+    </div>
+    @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
+    @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
+    <button type="submit" class="btn btn-success btn-sm ml-2">Generate Report</button>
+
+}
+    @Html.ActionLink("Back", "AssessorPage", "Officer")
+

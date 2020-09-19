@@ -80,7 +80,21 @@ namespace AutoClaimInsuranceMVC.Controllers
             ViewBag.completedreport = completedreport;
             return View(completedreport);
         }
-        
+        [Authorize]
+        public ActionResult AcceptClaim(string claimId,string reportId)
+        {
+            int claimID = int.Parse(claimId);
+            var acceptedclaim = db.Claims.Where(c => c.claimId==claimID).FirstOrDefault();
+            acceptedclaim.status = "claimed";
+            db.Entry(acceptedclaim).State = EntityState.Modified;
+            db.SaveChanges();
+            int reportID = int.Parse(reportId);
+            var report = db.Reports.Where(r => r.reportId == reportID).FirstOrDefault();
+            report.status = "claimed";
+            db.Entry(report).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("CompletedReport");
+        }
         [HttpGet]
         [Authorize]
         public ActionResult AcceptedClaim()

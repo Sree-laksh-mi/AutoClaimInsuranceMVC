@@ -17,31 +17,43 @@
             <div class="col-md-10">
                 @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
             </div>
+            <label for="GlassValue">Glass Value</label>
+            <div class="col-md-10">
+                @Html.TextBox("glassvalue", "", new { @class = "form-control" })
+            </div>
         </div>
         <div class="form-group col-md-3">
             <label for="Plastic">Palstic</label>
             <div class="col-md-10">
                 @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
             </div>
-        </div>
-        <div class="form-group col-md-3">
-            <label for="OuterBody">OuterBody</label>
+            <label for="plasticValue">Plastic Value</label>
             <div class="col-md-10">
-                @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
+                @Html.TextBox("plasticvalue", "", new { @class = "form-control" })
             </div>
         </div>
         <div class="form-group col-md-3">
-            <label for="Interior">Interior</label>
+            <label for="OuterBody">Interior</label>
+            <div class="col-md-10">
+                @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
+            </div>
+            <label for="OuterBody">Interior Value</label>
+            <div class="col-md-10">
+                @Html.TextBox("interiorvalue", "", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="Interior">Outer body</label>
             <div class="col-md-10">
                 @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
+            </div>
+            <label for="InteriorValue">outer body Value</label>
+            <div class="col-md-10">
+                @Html.TextBox("outervalue", "", new { @class = "form-control" })
             </div>
         </div>
     </div>
     <br />
-    <div class="form-group">
-        <label for="inputyear">Age of Vehicle</label>
-        @Html.TextBox("AgeofVehicle", "", new { @class = "form-control" })
-    </div>
 
     @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
     @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })

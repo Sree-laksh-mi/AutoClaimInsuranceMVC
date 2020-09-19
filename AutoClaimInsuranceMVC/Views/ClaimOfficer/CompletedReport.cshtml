@@ -17,9 +17,6 @@
             @Html.DisplayNameFor(model => model.claim.insurerId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Officer.firstName)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.status)
         </th>
         <th>
@@ -40,9 +37,6 @@
             @Html.DisplayFor(modelItem => item.claim.insurerId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Officer.firstName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.status)
         </td>
         <td>
@@ -55,9 +49,8 @@
             @Html.DisplayFor(modelItem => item.amount)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.reportId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.reportId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.reportId })
+            @Html.ActionLink("Accept", "AcceptClaim", new { claimid=item.claimId,reportId=item.reportId}) 
+            @Html.ActionLink("Reject", "Details", new { id=item.reportId }) |
         </td>
     </tr>
 }
