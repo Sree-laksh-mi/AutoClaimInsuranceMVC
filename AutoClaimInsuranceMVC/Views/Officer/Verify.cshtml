@@ -4,61 +4,50 @@
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2 class="text-center text-primary" style="font-family:Algerian">Search</h2>
+<div >
+    <div class="container">
+        <div class="offset-md-3 col-md-6 py-4 form border border-primary">
+           <h2 class="text-center text-primary" style="font-family:Algerian">Search</h2>
+            <hr />
+              @if (ViewBag.Exists == "Policy Exists")
+               {
+                  <dl class="dl-horizontal">
+                  <dt>
+                   @Html.DisplayNameFor(model => model.insurer.firstName)
+                  </dt>
+                   <dd>
+                    @Html.DisplayFor(model => model.insurer.firstName)
+                   </dd>
+                   <dt>
+                    @Html.DisplayNameFor(model => model.coverage)
+                    </dt>
+                  <dd>
+                    @Html.DisplayFor(model => model.coverage)
+                   </dd>
+                  <dt>
+                   @Html.DisplayNameFor(model => model.startDate)
+                  </dt>
+                   <dd>
+                   @Html.DisplayFor(model => model.startDate)
+                  </dd>
+                   <dt>
+                   @Html.DisplayNameFor(model => model.endDate)
+                   </dt>
+                   <dd>
+                   @Html.DisplayFor(model => model.endDate)
+                   </dd>
+                   <dt>
+                   @Html.DisplayNameFor(model => model.vehilceRegistrationNumber)
+                   </dt>
+                  <dd>
+                   @Html.DisplayFor(model => model.vehilceRegistrationNumber)
+                   </dd>
+                  <dt>
+                  @Html.DisplayNameFor(model => model.chassisNumber)
+                   </dt>
 
-
-<div>
-  
-    <hr />
-    @if (ViewBag.Exists == "Policy Exists")
-    {
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.insurer.firstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.insurer.firstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.coverage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.coverage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.startDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.startDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.endDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.endDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.vehilceRegistrationNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.vehilceRegistrationNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.chassisNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.chassisNumber)
+                 <dd>
+              @Html.DisplayFor(model => model.chassisNumber)
         </dd>
 
         <dt>
@@ -83,12 +72,13 @@
 <div>
     @ViewBag.Exists
 </div>
-<p>
+    <p>
     @if (ViewBag.Exists == "Policy Exists")
     {@Html.ActionLink("Accept", "Accept", new { claimId = ViewBag.claimId }) @ViewBag.status}
     else {<br /> @ViewBag.status
     @Html.ActionLink("Reject", "RejectInsurance", new { claimId = ViewBag.claimId })}
     
-    <br />
-    @Html.ActionLink("Back", "InsuranceOfficerPage")
-</p>
+    
+     </p>
+   </div>
+   </div>
