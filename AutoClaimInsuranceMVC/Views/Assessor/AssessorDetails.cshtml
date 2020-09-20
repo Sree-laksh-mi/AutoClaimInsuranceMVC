@@ -8,6 +8,8 @@
 
 <div>
     <h4 class="heading">Claim Details</h4>
+<div class="form-horizontal">
+    <h4 class="heading">Claim</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -54,12 +56,12 @@
 </div>
 @using (Html.BeginForm("ReportGenerate", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
 {
-    <div class="form-group">
+    <div class="form-row">
         <label for="Glass">Damage</label>
-        <div class="col-md-10">
+        <div >
             <h7>Complete</h7>@Html.RadioButton("damage", "complete", new { htmlAttributes = new { @class = "form-control" } })
-            <h7>Partial</h7>@Html.RadioButton("damage", "partial", new { htmlAttributes = new { @class = "form-control" } })
-            <h7>No Damage</h7>@Html.RadioButton("damage", "noDamage", new { htmlAttributes = new { @class = "form-control" } })
+          &nbsp;  <h7>Partial</h7>@Html.RadioButton("damage", "partial", new { htmlAttributes = new { @class = "form-control" } })
+            &nbsp;<h7>No Damage</h7>@Html.RadioButton("damage", "noDamage", new { htmlAttributes = new { @class = "form-control" } })
         </div>
     </div>
     @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })

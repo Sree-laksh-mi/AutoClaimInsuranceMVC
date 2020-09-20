@@ -8,47 +8,49 @@
 @using (Html.BeginForm("CreateReport", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
 {
     @Html.AntiForgeryToken()
-<div class="form-group">
+     
+<div class="form-row">
+    <h4 class="heading">Damage Report</h4>
     <label for="DamagedPart"> Percentage of Damage </label>
     <br />
     <div class="form-row">
-        <div class="form-group col-md-3">
+        <div >
             <label for="Glass">Glass</label>
-            <div class="col-md-10">
+            <div >
                 @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
             </div>
             <label for="GlassValue">Glass Value</label>
-            <div class="col-md-10">
+            <div>
                 @Html.TextBox("glassvalue", "", new { @class = "form-control" })
             </div>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-row">
             <label for="Plastic">Palstic</label>
-            <div class="col-md-10">
+            <div>
                 @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
             </div>
             <label for="plasticValue">Plastic Value</label>
-            <div class="col-md-10">
+            <div >
                 @Html.TextBox("plasticvalue", "", new { @class = "form-control" })
             </div>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-row">
             <label for="OuterBody">Interior</label>
-            <div class="col-md-10">
+            <div >
                 @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
             </div>
             <label for="OuterBody">Interior Value</label>
-            <div class="col-md-10">
+            <div >
                 @Html.TextBox("interiorvalue", "", new { @class = "form-control" })
             </div>
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-row">
             <label for="Interior">Outer body</label>
-            <div class="col-md-10">
+            <div >
                 @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
             </div>
             <label for="InteriorValue">outer body Value</label>
-            <div class="col-md-10">
+            <div >
                 @Html.TextBox("outervalue", "", new { @class = "form-control" })
             </div>
         </div>
