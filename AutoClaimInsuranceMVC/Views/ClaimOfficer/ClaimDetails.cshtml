@@ -6,10 +6,10 @@
     <script src="~/Scripts/bootstrap.js"></script>
 }
 
-<h2>ClaimDetails</h2>
+<h2 class="text-center text-primary" style="font-family:Algerian">Claim Details</h2>
 
 <div>
-    <h4 class="heading">Claim</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -119,6 +119,6 @@
         @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
         <button type="submit" class="btn btn-info btn-sm ml-2">Assign </button>
     }
-    @*@Html.ActionLink("Back to List", "Index")*@
+    
 </p>
 

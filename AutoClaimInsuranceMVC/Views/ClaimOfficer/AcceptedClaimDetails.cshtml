@@ -3,97 +3,98 @@
 @{
     ViewBag.Title = "AcceptedClaimDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<h2>AcceptedClaimDetails</h2>
+    <h2 class="text-center text-primary" style="font-family:Algerian">Accepted Claim Details</h2>
 
-<div>
-    <h4 class="heading">Claim</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.insurer.firstName)
-        </dt>
+  
 
-        <dd>
-            @Html.DisplayFor(model => model.insurer.firstName)
-        </dd>
+    <div>
+       
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.insurer.firstName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MailID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.insurer.firstName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MailID)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.MailID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.policyNumber)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MailID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.policyNumber)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.policyNumber)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.reason)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.policyNumber)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.reason)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.reason)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dateAndTime)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.reason)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.dateAndTime)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.dateAndTime)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.policeCase)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.dateAndTime)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.policeCase)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.policeCase)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.licenseCopy)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.policeCase)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.licenseCopy)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.licenseCopy)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.rcCopy)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.licenseCopy)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.rcCopy)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.rcCopy)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.rcCopy)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.status)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.claimDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.status)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.claimDate)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.claimDate)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.claimId ,style="color:blue"}) |
-    @*@Html.ActionLink("Back to List", "Index")*@
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.claimDate)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.claimId, style = "color:blue" }) |
+        
+    </p>
