@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Accepted Claim</h2>
+@*<h2>Accepted Claim</h2>*@
+<h4 class="heading"></h4>
 
 
 
@@ -49,7 +50,7 @@
         </td>
         <td>
            
-            @Html.ActionLink("Details", "AcceptedClaimDetails", new { id=item.claimId }) |
+            @Html.ActionLink("Details", "AcceptedClaimDetails", new { id=item.claimId ,style="color:blue"}) |
             
         </td>
     </tr>
