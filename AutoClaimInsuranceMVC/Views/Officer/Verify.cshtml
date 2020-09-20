@@ -4,7 +4,8 @@
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div >
+<br />
+<br />
     <div class="container">
         <div class="offset-md-3 col-md-6 py-4 form border border-primary">
             <h2 class="text-center text-primary" style="font-family:Algerian">Verification Report</h2>
@@ -67,21 +68,21 @@
                     </dd>
 
                 </dl>
-            } 
+            }
             @if (ViewBag.Exists == "Policy Exists")
             {
+
                 @Html.ActionLink("Accept", "Accept", new { claimId = ViewBag.claimId }) @ViewBag.status}
+
             else
-             {
+            {
+                   @ViewBag.Exists
                 <br /> @ViewBag.status
                 @Html.ActionLink("Reject", "RejectInsurance", new { claimId = ViewBag.claimId })}
-                </div>
-                  <div>
-                 @ViewBag.Exists
-                </div>
-                
+            <div>
+
+            </div>
+
+        </div>      
+</div>
     
-    
-     
-       </div>
-      </div>
