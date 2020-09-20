@@ -166,7 +166,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\icon.png" />
     <Content Include="Content\Logo.png" />
     <Content Include="Content\link up.png" />
     <Content Include="Content\OUR SERVICES.png" />

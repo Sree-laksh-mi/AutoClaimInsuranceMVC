@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.heading  {
+    font-size: xx-large;
+    font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}

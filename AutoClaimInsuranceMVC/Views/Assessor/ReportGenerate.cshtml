@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<h2>ReportGenerate</h2>*@
+<h2>Report</h2>
 @using (Html.BeginForm("CreateReport", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
 {
     @Html.AntiForgeryToken()
