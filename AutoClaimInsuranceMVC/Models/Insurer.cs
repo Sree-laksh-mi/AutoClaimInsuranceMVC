@@ -10,14 +10,19 @@ namespace AutoClaimInsuranceMVC.Models
     {
         [Key]
         [Required]
+        [Display(Name = "Insurer ID")]
         public string insurerId { get; set; }
         [Required]
+        [Display(Name = "First Name")]
         public string firstName { get; set; }
         [Required]
+        [Display(Name = "Last Name")]
         public string lastName { get; set; }
         [Required]
+        [Display(Name = "Address")]
         public string address { get; set; }
         [Required]
+        [Display(Name = "Mobile Number")]
         public string mobileNumber { get; set; }
 
 
