@@ -61,22 +61,6 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.licenseCopy)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.licenseCopy)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.rcCopy)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.rcCopy)
-                </dd>
-
-                <dt>
                     @Html.DisplayNameFor(model => model.status)
                 </dt>
 
@@ -98,7 +82,6 @@
         </div>
         <script>
             function Assign(officerId, claimId) {
-                alert("hello")
                 $.post("../ClaimOfficer/Assign", { officerId, claimId }, function (response, status) {
                     alert("Assigned Successfully")
                     if (status == "success")
@@ -106,21 +89,24 @@
                 })
             }
         </script>
-        @foreach (var obj in ViewBag.Assessor)
-        {
-            <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)"> @obj.firstName @obj.officerId <span class="badge badge-primary badge-pill">14</span></button>
-        }
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-3 col-md-6 py-4 form border border-primary">
+                    @foreach (var obj in ViewBag.Assessor)
+                    {
+                        <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)"> @obj.firstName<span class="badge badge-primary badge-pill"> 1 </span></button>
+                    }
+                </div>
+                </div></div>
+                @*<p>
 
+                @using (Html.BeginForm("Assign", "ClaimOfficer", FormMethod.Post, new { @class = "form-inline" }))
+                {
+                    @Html.TextBox("officerId", "", new { @class = "form-control" })
 
-        <p>
+                    @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
+                    <button type="submit" class="btn btn-info btn-sm ml-2">Assign </button>
+                }
 
-            @using (Html.BeginForm("Assign", "ClaimOfficer", FormMethod.Post, new { @class = "form-inline" }))
-            {
-                @Html.TextBox("officerId", "", new { @class = "form-control" })
-
-                @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
-                <button type="submit" class="btn btn-info btn-sm ml-2">Assign </button>
-            }
-
-        </p>
+            </p>*@
 

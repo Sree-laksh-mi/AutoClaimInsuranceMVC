@@ -6,48 +6,46 @@
 }
 
 <h2 class="text-center text-primary" style="font-family:Algerian">Accepted Claim</h2>
+<table class="table table-striped">
+    <tr class=" table-primary">
+        <th>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </th>
 
-        <table class="table table-striped">
-            <tr class=" table-primary">
-                <th>
-                    @Html.DisplayNameFor(model => model.insurer.firstName)
-                </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.claimDate)
+        </th>
+        <th></th>
+    </tr>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.policyNumber)
-                </th>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.insurer.firstName)
+    </td>
 
+    <td>
+        @Html.DisplayFor(modelItem => item.policyNumber)
+    </td>
 
+    <td>
+        @Html.DisplayFor(modelItem => item.status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.claimDate)
+    </td>
+    <td>
+        @Html.ActionLink("Details", "AcceptedClaimDetails", new { claimid = item.claimId }) 
+    </td>
+  
+</tr>
+}
 
-                <th>
-                    @Html.DisplayNameFor(model => model.status)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.claimDate)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.insurer.firstName)
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.policyNumber)
-                    </td>
-
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.status)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.claimDate)
-                    </td>
-
-                </tr>
-            }
-
-        </table>
+</table>
