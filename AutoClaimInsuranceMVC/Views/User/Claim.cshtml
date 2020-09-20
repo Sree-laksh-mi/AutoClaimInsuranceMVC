@@ -52,12 +52,14 @@
 
 
     <div>
-        Copy Of License @Html.TextBox("fileLicense", "", new { type = "file" }) <br />
+        @Html.LabelFor(model=>model.licenseCopy,htmlAttributes:new { @class = "control-label col-md-2" })
+        @Html.TextBox("fileLicense", "", new { type = "file" }) <br />
         @ViewBag.Message
     </div>
 
     <div>
-        Copy of RC   @Html.TextBox("fileRc", "", new { type = "file" }) <br />
+        @Html.LabelFor(model => model.rcCopy, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.TextBox("fileRc", "", new { type = "file" }) <br />
         @ViewBag.Message_two
     </div>
 
