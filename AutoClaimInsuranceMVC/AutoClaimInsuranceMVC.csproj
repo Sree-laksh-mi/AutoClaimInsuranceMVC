@@ -154,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\AboutUs.png" />
+    <Content Include="Content\assure.png" />
+    <Content Include="Content\assure1.png" />
     <Content Include="Content\contact-us-concept-illustration_114360-2299.png" />
     <Content Include="Content\landing.png" />
     <Content Include="Content\Linkup.png" />

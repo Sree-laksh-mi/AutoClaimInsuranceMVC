@@ -21,6 +21,15 @@
         .nav-link {
             font-size: 100px;
         }
+        #footer {
+            position:fixed;
+            padding: 10px 10px 0px 10px;
+            bottom: 0;
+            width: 100%;
+            /* Height of the footer*/
+            height: 40px;
+         
+        }
     </style>
     <script src="~/Scripts/bootstrap.js"></script>
 
@@ -111,10 +120,10 @@
 
     <div class="container body-content mt-5 pt-4">
         @RenderBody()
-        <hr />
-        <footer class="mt-auto">
+        <div id="footer">
             <p>&copy; @DateTime.Now.Year -  Assure Insurance Pvt. Ltd</p>
-        </footer>
+        </div>
+        
     </div>
 
     @Scripts.Render("~/bundles/jquery")
