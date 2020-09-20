@@ -6,68 +6,77 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
 }
 
-<div>
-    <h4 class="heading">Claim Details</h4>
-<div class="form-horizontal">
-    <h4 class="heading">Claim</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.insurer.firstName)
-        </dt>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6 py-4 form border border-primary">
+            <h2 class="text-center text-primary" style="font-family:Algerian">Claim Details</h2>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.insurer.firstName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.insurer.firstName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.insurer.firstName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.reason)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.reason)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.reason)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.reason)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dateAndTime)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.dateAndTime)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.dateAndTime)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.dateAndTime)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.policeCase)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.policeCase)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.policeCase)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.policeCase)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.claimDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.claimDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.claimDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.claimDate)
+                </dd>
 
-    </dl>
-</div>
-@using (Html.BeginForm("ReportGenerate", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
-{
-    <div class="form-row">
-        <label for="Glass">Damage</label>
-        <div >
-            <h7>Complete</h7>@Html.RadioButton("damage", "complete", new { htmlAttributes = new { @class = "form-control" } })
-          &nbsp;  <h7>Partial</h7>@Html.RadioButton("damage", "partial", new { htmlAttributes = new { @class = "form-control" } })
-            &nbsp;<h7>No Damage</h7>@Html.RadioButton("damage", "noDamage", new { htmlAttributes = new { @class = "form-control" } })
+            </dl>
         </div>
     </div>
-    @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
-    @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
-    <button type="submit" class="btn btn-success btn-sm ml-2">Generate Report</button>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6 py-4 form border border-primary">
+            @using (Html.BeginForm("ReportGenerate", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
+            {
+            <div class="form-row">
+                <label for="Glass">Damage:-</label> &nbsp;&nbsp;
+                <div>
+                    <h7>Complete</h7>@Html.RadioButton("damage", "complete", new { htmlAttributes = new { @class = "form-control" } }) 
+                    &nbsp;  <h7>Partial</h7>@Html.RadioButton("damage", "partial", new { htmlAttributes = new { @class = "form-control" } }) &nbsp;
+                    &nbsp;  <h7>No Damage</h7>@Html.RadioButton("damage", "noDamage", new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+                @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
+                @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
+                <button type="submit" class="btn btn-success btn-sm ml-5 mr-0" >Generate Report</button>
 
-}
+            }
+        </div>
+    </div>
+</div>
+
 
 

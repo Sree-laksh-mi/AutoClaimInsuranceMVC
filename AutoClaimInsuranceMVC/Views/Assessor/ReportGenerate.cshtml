@@ -4,61 +4,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Report</h2>
 @using (Html.BeginForm("CreateReport", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
 {
     @Html.AntiForgeryToken()
-     
-<div class="form-row">
-    <h4 class="heading">Damage Report</h4>
-    <label for="DamagedPart"> Percentage of Damage </label>
-    <br />
-    <div class="form-row">
-        <div >
-            <label for="Glass">Glass</label>
-            <div >
-                @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
-            </div>
-            <label for="GlassValue">Glass Value</label>
-            <div>
-                @Html.TextBox("glassvalue", "", new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-row">
-            <label for="Plastic">Palstic</label>
-            <div>
-                @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
-            </div>
-            <label for="plasticValue">Plastic Value</label>
-            <div >
-                @Html.TextBox("plasticvalue", "", new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-row">
-            <label for="OuterBody">Interior</label>
-            <div >
-                @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
-            </div>
-            <label for="OuterBody">Interior Value</label>
-            <div >
-                @Html.TextBox("interiorvalue", "", new { @class = "form-control" })
-            </div>
-        </div>
-        <div class="form-row">
-            <label for="Interior">Outer body</label>
-            <div >
-                @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
-            </div>
-            <label for="InteriorValue">outer body Value</label>
-            <div >
-                @Html.TextBox("outervalue", "", new { @class = "form-control" })
-            </div>
-        </div>
-    </div>
-    <br />
 
-    @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
-    @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
-</div>
-    <button type="submit" class="btn btn-success btn-sm ml-2">Submit</button>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-3 col-md-6 py-4 form border border-dark">
+                <h2 class="text-center text-primary" style="font-family:Algerian">Damage Report</h2>
+                <div class="form-group row px-3">
+                    <label class="col-4">Glass</label>
+                    @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
+                    <label class="col-4">Glass Value</label>
+                    @Html.TextBox("glassvalue", "", new { @class = "form-control" })
+                </div>
+               
+                <div class="form-group row px-3">
+                    <label class="col-4">Glass</label>
+                    @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
+                    <label class="col-4">Glass Value</label>
+                    @Html.TextBox("glassvalue", "", new { @class = "form-control" })
+                </div>
+                <div class="form-group row px-3">
+                    <label class="col-4">Plastic</label>
+                    @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
+                    <label class="col-4">Plastic Value</label>
+                    @Html.TextBox("plasticvalue", "", new { @class = "form-control" })
+                </div>
+                <div class="form-group row px-3">
+                    <label class="col-4">Interior</label>
+                    @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
+                    <label class="col-4">Interior Value</label>
+                    @Html.TextBox("interiorvalue", "", new { @class = "form-control" })
+                </div>
+                <div class="form-group row px-3">
+                    <label class="col-4">Outer </label>
+                    @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
+                    <label class="col-4">OuterBody Value</label>
+                    @Html.TextBox("outervalue", "", new { @class = "form-control" })
+                </div>
+                <div class="form-group mt-5 text-center">
+                    &nbsp;           &nbsp;     &nbsp;     &nbsp; <button type="submit" class="btn btn-info form-control ml-5"> Submit</button>
+                </div>
+                @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
+                @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
+            </div>
+           
+        </div>
+        </div>
+
 }
