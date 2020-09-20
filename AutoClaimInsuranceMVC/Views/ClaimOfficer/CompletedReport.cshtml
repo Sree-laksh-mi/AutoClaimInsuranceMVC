@@ -4,15 +4,12 @@
     ViewBag.Title = "CompletedReport";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2 class="text-center text-primary" style="font-family:Algerian">Completed Report</h2>
 
-<h4 class="heading">CompletedReport</h4>
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
 
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="table-primary">
         <th>
             @Html.DisplayNameFor(model => model.claim.insurerId)
         </th>
@@ -32,7 +29,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="table-primary">
         <td>
             @Html.DisplayFor(modelItem => item.claim.insurerId)
         </td>

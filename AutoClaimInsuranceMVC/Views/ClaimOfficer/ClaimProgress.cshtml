@@ -4,11 +4,11 @@
     ViewBag.Title = "ClaimProgress";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2 class="text-center text-primary" style="font-family:Algerian">Claim Progress</h2>
 
-<h2 class="heading">ClaimProgress</h2>
 
-<table class="table">
-    <tr>
+<table class="table table-striped">
+    <tr class="table-primary">
         <th>
             @Html.DisplayNameFor(model => model.insurer.firstName)
         </th>
@@ -27,7 +27,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr class="table-primary">
         <td>
             @Html.DisplayFor(modelItem => item.insurer.firstName)
         </td>

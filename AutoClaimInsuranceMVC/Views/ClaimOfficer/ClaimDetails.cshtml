@@ -6,119 +6,121 @@
     <script src="~/Scripts/bootstrap.js"></script>
 }
 
-<h2>ClaimDetails</h2>
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6 py-4 form border border-primary">
+            <h2 class="text-center text-primary" style="font-family:Algerian">Claim Details</h2>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.insurer.firstName)
+                </dt>
 
-<div>
-    <h4 class="heading">Claim</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.insurer.firstName)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.insurer.firstName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.insurer.firstName)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailID)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MailID)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MailID)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.MailID)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.policyNumber)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.policyNumber)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.policyNumber)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.policyNumber)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.reason)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.reason)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.reason)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.reason)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.dateAndTime)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.dateAndTime)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.dateAndTime)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.dateAndTime)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.policeCase)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.policeCase)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.policeCase)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.policeCase)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.licenseCopy)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.licenseCopy)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.licenseCopy)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.licenseCopy)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.rcCopy)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.rcCopy)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.rcCopy)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.rcCopy)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.status)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.status)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.status)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.status)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.claimDate)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.claimDate)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.claimDate)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.claimDate)
-        </dd>
-
-    </dl>
-</div>
-<script>
-    function Assign(officerId, claimId) {
-        alert("hello")
-        $.post("../ClaimOfficer/Assign", { officerId, claimId }, function (response, status) {
-            alert("Assigned Successfully")
-            if (status == "success")
-                location.href="/ClaimOfficer/ClaimProgress"
-        })
-    }
-    </script>
-@foreach (var obj in ViewBag.Assessor)
-{
-    <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)"  > @obj.firstName @obj.officerId <span class="badge badge-primary badge-pill">14</span></button>
-}
+            </dl>
+            </div>
+        </div>
+        </div>
+        <script>
+            function Assign(officerId, claimId) {
+                alert("hello")
+                $.post("../ClaimOfficer/Assign", { officerId, claimId }, function (response, status) {
+                    alert("Assigned Successfully")
+                    if (status == "success")
+                        location.href = "/ClaimOfficer/ClaimProgress"
+                })
+            }
+        </script>
+        @foreach (var obj in ViewBag.Assessor)
+        {
+            <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)"> @obj.firstName @obj.officerId <span class="badge badge-primary badge-pill">14</span></button>
+        }
 
 
-<p>
+        <p>
 
-    @using (Html.BeginForm("Assign", "ClaimOfficer", FormMethod.Post, new { @class = "form-inline" }))
-    {
-        @Html.TextBox("officerId","", new { @class = "form-control"})
+            @using (Html.BeginForm("Assign", "ClaimOfficer", FormMethod.Post, new { @class = "form-inline" }))
+            {
+                @Html.TextBox("officerId", "", new { @class = "form-control" })
 
-        @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
-        <button type="submit" class="btn btn-info btn-sm ml-2">Assign </button>
-    }
-    @*@Html.ActionLink("Back to List", "Index")*@
-</p>
+                @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
+                <button type="submit" class="btn btn-info btn-sm ml-2">Assign </button>
+            }
+
+        </p>
 
