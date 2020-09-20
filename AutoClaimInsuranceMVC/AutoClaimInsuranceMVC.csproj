@@ -147,6 +147,7 @@
     <Compile Include="Models\Claim.cs" />
     <Compile Include="Models\Insurance.cs" />
     <Compile Include="Models\Insurer.cs" />
+    <Compile Include="Models\Mail.cs" />
     <Compile Include="Models\Officer.cs" />
     <Compile Include="Models\RegisteredUser.cs" />
     <Compile Include="Models\Report.cs" />
@@ -326,6 +327,7 @@
     <Content Include="Views\ClaimOfficer\AcceptedClaimDetails.cshtml" />
     <Content Include="Views\Assessor\AssessorDetails.cshtml" />
     <Content Include="Views\Assessor\ReportGenerate.cshtml" />
+    <Content Include="Views\ClaimOfficer\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.Helpers;
 
 namespace AutoClaimInsuranceMVC.Controllers
 {
@@ -119,8 +120,13 @@ namespace AutoClaimInsuranceMVC.Controllers
             ViewBag.acceptedclaim = acceptedclaim;
             return View(acceptedclaim);
         }
+        public ActionResult RejectedClaim()
+        {
+            var rejectedclaim = db.Claims.Where(c => c.status.Equals("Rejected")).ToList();
+            ViewBag.rejectedclaim = rejectedclaim;
+            return View();
 
-      
+        }
         [Authorize]
         public ActionResult AcceptedClaimDetails(string claimId)
         {
@@ -128,7 +134,36 @@ namespace AutoClaimInsuranceMVC.Controllers
             var acceptedClaimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
             return View(acceptedClaimDetails);
         }
+        public ActionResult SendEmail()
+        {
 
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult SendEmail(Mail obj)
+        {
+            //Configuring webMail class to send emails  
+            //gmail smtp server  
+            WebMail.SmtpServer = "smtp.gmail.com";
+            //gmail port to send emails  
+            WebMail.SmtpPort = 587;
+            WebMail.SmtpUseDefaultCredentials = true;
+            //sending emails with secure protocol  
+            WebMail.EnableSsl = true;
+            //EmailId used to send emails from application  
+            WebMail.UserName = "manasacheekula";
+            WebMail.Password = "Asanam@27";
+
+            //Sender email address.  
+            WebMail.From = "manasacheekula@gmail.com";
+
+            //Send email  
+            WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
+            ViewBag.Status = "Email Sent Successfully.";
+            return View();
+
+        }
     }
+
 }
