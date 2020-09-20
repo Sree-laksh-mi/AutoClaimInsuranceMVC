@@ -11,6 +11,7 @@ namespace AutoClaimInsuranceMVC.Models
     public class RegisteredUser
     {
         [Required(ErrorMessage = "Insurer ID is required")]
+        [Display(Name = "Insurer ID")]
         public string insurerId { get; set; }
         [Key]
         [Required(ErrorMessage = "Email is required")]
@@ -26,7 +27,9 @@ namespace AutoClaimInsuranceMVC.Models
         [NotMapped]
         [System.ComponentModel.DataAnnotations.Compare("password")]
         [Required(ErrorMessage = "Confirm Password required")]
+        [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
+        
         public string confirmPassword { get; set; }
 
 

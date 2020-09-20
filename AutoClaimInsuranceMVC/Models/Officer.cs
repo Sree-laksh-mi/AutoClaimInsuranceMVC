@@ -11,10 +11,13 @@ namespace AutoClaimInsuranceMVC.Models
     {
         [Key]
         [Required]
+        [Display(Name = "Officer ID")]
         public string officerId { get; set; }
         [Required]
+        [Display(Name = "First Name")]
         public string firstName { get; set; }
         [Required]
+        [Display(Name = "Last Name")]
         public string lastName { get; set; }
         [Required(ErrorMessage = "Password is required")]
         [Display(Name = "Password")]
@@ -23,6 +26,7 @@ namespace AutoClaimInsuranceMVC.Models
         [RegularExpression("^((?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])|(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[^a-zA-Z0-9])|(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^a-zA-Z0-9])).{8,}$", ErrorMessage = "Passwords must be at least 8 characters and should contain : upper case (A-Z), lower case (a-z), number (0-9) and special character (e.g. !@#$%^&*)")]
         public string password { get; set; }
         [Required]
+        [Display(Name = "Role")]
         public string role { get; set; }
 
 
