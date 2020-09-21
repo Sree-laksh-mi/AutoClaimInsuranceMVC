@@ -46,8 +46,8 @@
             @Html.DisplayFor(modelItem => item.amount)
         </td>
         <td>
-            @Html.ActionLink("Accept", "AcceptClaim", new { claimid=item.claimId,reportId=item.reportId,style="color:blue"}) |
-            @Html.ActionLink("Reject", "RejectClaim", new { claimid = item.claimId, reportId = item.reportId ,style="color:blue"}) 
+            @Html.ActionLink("Accept", "AcceptClaim", new { claimId=item.claimId,reportId=item.reportId}) |
+            @Html.ActionLink("Reject", "RejectClaim", new { claimId = item.claimId, reportId = item.reportId}) 
         </td>
     </tr>
 }

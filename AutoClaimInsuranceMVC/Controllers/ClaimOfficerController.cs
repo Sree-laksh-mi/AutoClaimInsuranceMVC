@@ -81,7 +81,9 @@ namespace AutoClaimInsuranceMVC.Controllers
             ViewBag.completedreport = completedreport;
             return View(completedreport);
         }
+       
         [Authorize]
+       
         public ActionResult AcceptClaim(string claimId,string reportId)
         {
             int claimID = int.Parse(claimId);
@@ -94,7 +96,21 @@ namespace AutoClaimInsuranceMVC.Controllers
             report.status = "claimed";
             db.Entry(report).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("SendEmail");
+
+            var data = db.Claims.Where(c => c.claimId == claimID).FirstOrDefault();
+            Mail obj = new Mail();
+            obj.ToEmail = data.MailID;
+            obj.EmailSubject = "Claim-status---This is an auto Generated Mail";
+            obj.EMailBody = "Your insurance is claimed, claim authorizer will contact you soon";
+            WebMail.SmtpServer = "smtp.gmail.com";
+            WebMail.SmtpPort = 587;
+            WebMail.SmtpUseDefaultCredentials = true;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "autoclaiminsurance";
+            WebMail.Password = "autoclaim12345#";
+            WebMail.From = "autoclaiminsurance@gmail.com";
+            WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
+            return RedirectToAction("CompletedReport");
         }
         [HttpGet]
         [Authorize]
@@ -110,7 +126,22 @@ namespace AutoClaimInsuranceMVC.Controllers
             report.status = "rejected";
             db.Entry(report).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("SendEmail");
+
+            var data = db.Claims.Where(c => c.claimId == claimID).FirstOrDefault();
+            Mail obj = new Mail();
+            obj.ToEmail = data.MailID;
+            obj.EmailSubject = "Claim-status---This is an auto Generated Mail";
+            obj.EMailBody = "Sorry, Your claim is rejected due to discrepancy found in details";
+            WebMail.SmtpServer = "smtp.gmail.com";
+            WebMail.SmtpPort = 587;
+            WebMail.SmtpUseDefaultCredentials = true;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "autoclaiminsurance";
+            WebMail.Password = "autoclaim12345#";
+            WebMail.From = "autoclaiminsurance@gmail.com";
+            WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
+            return RedirectToAction("CompletedReport");
+
         }
         [HttpGet]
         [Authorize]
@@ -134,34 +165,31 @@ namespace AutoClaimInsuranceMVC.Controllers
             var acceptedClaimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
             return View(acceptedClaimDetails);
         }
-        public ActionResult SendEmail()
-        {
+      
+        
 
-            return View();
-        }
+        //[HttpPost]
+        //public ActionResult SendEmail(Mail obj)
+        //{
+        //    //Configuring webMail class to send emails  
+        //    //gmail smtp server  
+        //    WebMail.SmtpServer = "smtp.gmail.com";
+        //    //gmail port to send emails  
+        //    WebMail.SmtpPort = 587;
+        //    WebMail.SmtpUseDefaultCredentials = true;
+        //    //sending emails with secure protocol  
+        //    WebMail.EnableSsl = true;
+        //    //EmailId used to send emails from application  
+        //    WebMail.UserName = "autoclaiminsurance";
+        //    WebMail.Password = "autoclaim12345#";
+        //    //Sender email address.  
+        //    WebMail.From = "autoclaiminsurance@gmail.com";
+        //    //Send email  
+        //    WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
+        //    ViewBag.Status = "Email Sent Successfully.";
+        //    return RedirectToAction("CompletedReport");
 
-        [HttpPost]
-        public ActionResult SendEmail(Mail obj)
-        {
-            //Configuring webMail class to send emails  
-            //gmail smtp server  
-            WebMail.SmtpServer = "smtp.gmail.com";
-            //gmail port to send emails  
-            WebMail.SmtpPort = 587;
-            WebMail.SmtpUseDefaultCredentials = true;
-            //sending emails with secure protocol  
-            WebMail.EnableSsl = true;
-            //EmailId used to send emails from application  
-            WebMail.UserName = "autoclaiminsurance";
-            WebMail.Password = "autoclaim12345#";
-            //Sender email address.  
-            WebMail.From = "autoclaiminsurance@gmail.com";
-            //Send email  
-            WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
-            ViewBag.Status = "Email Sent Successfully.";
-            return RedirectToAction("CompletedReport");
-
-        }
+        //}
     }
 
 }

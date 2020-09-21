@@ -329,7 +329,6 @@
     <Content Include="Views\ClaimOfficer\AcceptedClaimDetails.cshtml" />
     <Content Include="Views\Assessor\AssessorDetails.cshtml" />
     <Content Include="Views\Assessor\ReportGenerate.cshtml" />
-    <Content Include="Views\ClaimOfficer\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
