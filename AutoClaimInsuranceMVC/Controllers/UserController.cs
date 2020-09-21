@@ -236,8 +236,8 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult GetStatus()
         {
-            string insurerId = Session["insurerId"].ToString();
-            var claim = db.Claims.Where(c => c.insurerId.Equals(insurerId)).ToList();
+            string userId = Session["userId"].ToString();
+            var claim = db.Claims.Where(c => c.MailID.Equals(userId)).ToList();
             return View(claim);
         }
 
