@@ -83,7 +83,6 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
        
         [Authorize]
-       
         public ActionResult AcceptClaim(string claimId,string reportId)
         {
             int claimID = int.Parse(claimId);
