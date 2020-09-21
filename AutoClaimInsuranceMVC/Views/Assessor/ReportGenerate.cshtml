@@ -3,6 +3,13 @@
     ViewBag.Title = "ReportGenerate";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .btn {
+        height: 40px;
+        width: 70px;
+        font-size: medium;
+    }
+</style>
 
 @using (Html.BeginForm("CreateReport", "Assessor", FormMethod.Post, new { @class = "form-inline" }))
 {
@@ -12,32 +19,32 @@
         <div class="row">
             <div class="offset-md-3 col-md-6 py-4 form border border-dark">
                 <h2 class="text-center text-primary" style="font-family:Algerian">Damage Report</h2>
-                <div class="form-group row px-3">
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Glass</label>
                     @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
                     <label class="col-4">Glass Value</label>
                     @Html.TextBox("glassvalue", "", new { @class = "form-control" })
                 </div>
                
-                <div class="form-group row px-3">
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Glass</label>
                     @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
                     <label class="col-4">Glass Value</label>
                     @Html.TextBox("glassvalue", "", new { @class = "form-control" })
                 </div>
-                <div class="form-group row px-3">
+                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Plastic</label>
                     @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
                     <label class="col-4">Plastic Value</label>
                     @Html.TextBox("plasticvalue", "", new { @class = "form-control" })
                 </div>
-                <div class="form-group row px-3">
+                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Interior</label>
                     @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
                     <label class="col-4">Interior Value</label>
                     @Html.TextBox("interiorvalue", "", new { @class = "form-control" })
                 </div>
-                <div class="form-group row px-3">
+                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Outer </label>
                     @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
                     <label class="col-4">OuterBody Value</label>
