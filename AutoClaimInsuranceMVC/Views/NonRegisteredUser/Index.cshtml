@@ -48,13 +48,13 @@
             </div>
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group row px-3">
-                <label class="col-4"> Police Case</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <h7>Yes</h7> &nbsp;@Html.RadioButtonFor(m => m.policeCase, "Yes", new { htmlAttributes = new { @class = "col form-control ml-5" } })
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <h7>No</h7>@Html.RadioButtonFor(m => m.policeCase, "No", new { htmlAttributes = new { @class = "policscase" } })
-            </div>
+        <div class="form-group row px-3">
+            <label class="col-4"> Police Case</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h7>Yes</h7> &nbsp;@Html.RadioButtonFor(m => m.policeCase, "Yes", new { htmlAttributes = new { @class = "col form-control ml-5" } })
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h7>No</h7>@Html.RadioButtonFor(m => m.policeCase, "No", new { htmlAttributes = new { @class = "policscase" } })
+        </div>
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group row px-3">
