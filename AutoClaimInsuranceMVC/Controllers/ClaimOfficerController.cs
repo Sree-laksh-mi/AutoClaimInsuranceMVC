@@ -94,7 +94,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             report.status = "claimed";
             db.Entry(report).State = EntityState.Modified;
             db.SaveChanges();
-            return RedirectToAction("CompletedReport");
+            return RedirectToAction("SendEmail");
         }
         [HttpGet]
         [Authorize]
@@ -110,7 +110,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             report.status = "rejected";
             db.Entry(report).State = EntityState.Modified;
             db.SaveChanges();
-            return View("CompleteReport");
+            return RedirectToAction("SendEmail");
         }
         [HttpGet]
         [Authorize]
@@ -124,7 +124,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         {
             var rejectedclaim = db.Claims.Where(c => c.status.Equals("Rejected")).ToList();
             ViewBag.rejectedclaim = rejectedclaim;
-            return View();
+            return View(rejectedclaim);
 
         }
         [Authorize]
@@ -152,16 +152,14 @@ namespace AutoClaimInsuranceMVC.Controllers
             //sending emails with secure protocol  
             WebMail.EnableSsl = true;
             //EmailId used to send emails from application  
-            WebMail.UserName = "manasacheekula";
-            WebMail.Password = "Asanam@27";
-
+            WebMail.UserName = "autoclaiminsurance";
+            WebMail.Password = "autoclaim12345#";
             //Sender email address.  
-            WebMail.From = "manasacheekula@gmail.com";
-
+            WebMail.From = "autoclaiminsurance@gmail.com";
             //Send email  
             WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
             ViewBag.Status = "Email Sent Successfully.";
-            return View();
+            return RedirectToAction("CompletedReport");
 
         }
     }

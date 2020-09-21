@@ -23,11 +23,13 @@
         <th>
             @Html.DisplayNameFor(model => model.claimDate)
         </th>
-        
+        <th>
+            Action
+        </th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr class="table-primary">
+    <tr >
         <td>
             @Html.DisplayFor(modelItem => item.insurer.firstName)
         </td>
