@@ -94,19 +94,8 @@
                 <div class="offset-md-3 col-md-6 py-4 form border border-primary">
                     @foreach (var obj in ViewBag.Assessor)
                     {
-                        <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)"> @obj.firstName<span class="badge badge-primary badge-pill"> 1 </span></button>
+                        <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)">  @obj.firstName<span class="badge badge-primary badge-pill">@obj.officerId</span></button>
                     }
                 </div>
                 </div></div>
-                @*<p>
-
-                @using (Html.BeginForm("Assign", "ClaimOfficer", FormMethod.Post, new { @class = "form-inline" }))
-                {
-                    @Html.TextBox("officerId", "", new { @class = "form-control" })
-
-                    @Html.HiddenFor(m => m.claimId, new { @class = "form-control", @value = Model.claimId })
-                    <button type="submit" class="btn btn-info btn-sm ml-2">Assign </button>
-                }
-
-            </p>*@
-
+              

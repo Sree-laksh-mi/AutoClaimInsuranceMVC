@@ -154,6 +154,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\22.jpg" />
+    <Content Include="Content\33.jpg" />
     <Content Include="Content\AboutUs.png" />
     <Content Include="Content\assure.png" />
     <Content Include="Content\assure1.png" />
