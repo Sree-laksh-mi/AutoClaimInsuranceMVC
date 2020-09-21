@@ -138,9 +138,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009180919543_newdb.cs" />
-    <Compile Include="Migrations\202009180919543_newdb.designer.cs">
-      <DependentUpon>202009180919543_newdb.cs</DependentUpon>
+    <Compile Include="Migrations\202009211913302_data.cs" />
+    <Compile Include="Migrations\202009211913302_data.designer.cs">
+      <DependentUpon>202009211913302_data.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AutoClaimContext.cs" />
@@ -348,8 +348,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202009180919543_newdb.resx">
-      <DependentUpon>202009180919543_newdb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009211913302_data.resx">
+      <DependentUpon>202009211913302_data.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
