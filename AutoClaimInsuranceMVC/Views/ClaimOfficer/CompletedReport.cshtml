@@ -8,7 +8,7 @@
 
 
 
-<table class="table table-striped">
+<table class="table table-striped ">
     <tr class="table-primary"style="font-size:medium;font-family:'Book Antiqua'">
         <th>
             @Html.DisplayNameFor(model => model.claim.insurerId)
@@ -46,7 +46,7 @@
             @Html.DisplayFor(modelItem => item.amount)
         </td>
         <td>
-            @Html.ActionLink("Accept", "AcceptClaim", new { claimId=item.claimId,reportId=item.reportId}) |
+            @Html.ActionLink("Accept", "AcceptClaim", new { claimId=item.claimId,reportId=item.reportId}) 
             @Html.ActionLink("Reject", "RejectClaim", new { claimId = item.claimId, reportId = item.reportId}) 
         </td>
     </tr>

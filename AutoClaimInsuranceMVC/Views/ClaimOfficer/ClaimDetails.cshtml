@@ -92,9 +92,11 @@
         <div class="container">
             <div class="row">
                 <div class="offset-md-3 col-md-6 py-4 form border border-primary">
+                    <h2 class="text-center text-primary" style="font-size:medium; font-family:'Book Antiqua';">Assign</h2>
                     @foreach (var obj in ViewBag.Assessor)
                     {
                         <button class="btn-outline btn-outline-primary" id="list-home-list" data-toggle="list" onclick="Assign(@obj.officerId , @Model.claimId)">  @obj.firstName<span class="badge badge-primary badge-pill">@obj.officerId</span></button>
+                       
                     }
                 </div>
                 </div></div>

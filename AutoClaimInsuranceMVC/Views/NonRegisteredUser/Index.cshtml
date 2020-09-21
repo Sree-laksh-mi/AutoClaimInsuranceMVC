@@ -47,11 +47,11 @@
             </div>
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
-                <label class="col-4"> Date and Time</label>
-                @Html.EditorFor(model => model.dateAndTime, new { htmlAttributes = new { @class = "col form-control" } })
-                @Html.ValidationMessageFor(model => model.dateAndTime, "", new { @class = "text-danger" })
-            </div>
+        <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
+            <label class="col-4" > Date and Time</label>
+            <input class="col form-control" type="datetime-local" id="dateAndTime" name="dateAndTime">
+            @Html.ValidationMessageFor(model => model.dateAndTime, "", new { @class = "text-danger" })
+        </div>
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
@@ -70,14 +70,14 @@
                      new SelectListItem { Text = "Manufacturing Defect", Value = "Manufacturing Defect"},
                      new SelectListItem { Text = "Natural calamity", Value = "Natural Calamity"},
                      new SelectListItem { Text = "Theft", Value = "Theft"}
-                   }, new { htmlAttributes = new { @class = "btn btn-secondary btn-lg dropdown-toggle  mr-5 form-control" } })
+                   }, new { htmlAttributes = new { @class = "btn btn-secondary btn-lg dropdown-toggle  mr-5 col form-control" } })
             </div>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                 <label class="col-4">Licence Copy </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                @Html.TextBox("fileLicense", "", new { type = "file" }) <br />
+                @Html.TextBox("fileLicense", "", new { type = "file", @class = "col form-control" }) <br />
                 @ViewBag.Message
 
             </div>
@@ -86,7 +86,7 @@
                 <label class="col-4">RC Copy </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                @Html.TextBox("fileRc", "", new { type = "file" }) <br />
+                @Html.TextBox("fileRc", "", new { type = "file" ,@class = "col form-control" }) <br />
                 @ViewBag.Message_two
             </div>
             <div class="form-group mt-5 text-center ">

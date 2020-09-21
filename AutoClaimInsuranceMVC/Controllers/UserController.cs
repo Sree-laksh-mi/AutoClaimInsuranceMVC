@@ -234,6 +234,14 @@ namespace AutoClaimInsuranceMVC.Controllers
             
         }
         [Authorize]
+        public ActionResult GetStatus()
+        {
+            string insurerId = Session["insurerId"].ToString();
+            var claim = db.Claims.Where(c => c.insurerId.Equals(insurerId)).ToList();
+            return View(claim);
+        }
+
+        [Authorize]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

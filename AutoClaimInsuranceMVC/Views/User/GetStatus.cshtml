@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AutoClaimInsuranceMVC.Models.Claim>
+
+@{
+    ViewBag.Title = "GetStatus";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetStatus</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.insurer.firstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policyNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reason)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateAndTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.policeCase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.licenseCopy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rcCopy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.claimDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.insurer.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.policyNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reason)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateAndTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.policeCase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.licenseCopy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rcCopy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.claimDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.claimId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.claimId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.claimId })
+        </td>
+    </tr>
+}
+
+</table>
