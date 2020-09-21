@@ -21,37 +21,32 @@
                 <h2 class="text-center text-primary" style="font-family:Algerian">Damage Report</h2>
                 <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Glass</label>
-                    @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
+                    @Html.TextBox("glasspercentage", "", new { @class = "form-control",@placeholder="Damaged Percentage" })
                     <label class="col-4">Glass Value</label>
                     @Html.TextBox("glassvalue", "", new { @class = "form-control" })
                 </div>
                
-                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
-                    <label class="col-4">Glass</label>
-                    @Html.TextBox("glasspercentage", "", new { @class = "form-control" })
-                    <label class="col-4">Glass Value</label>
-                    @Html.TextBox("glassvalue", "", new { @class = "form-control" })
-                </div>
+                
                 <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Plastic</label>
-                    @Html.TextBox("plasticpercentage", "", new { @class = "form-control" })
+                    @Html.TextBox("plasticpercentage", "", new { @class = "form-control", @placeholder = "Damaged Percentage" })
                     <label class="col-4">Plastic Value</label>
                     @Html.TextBox("plasticvalue", "", new { @class = "form-control" })
                 </div>
                 <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Interior</label>
-                    @Html.TextBox("interiorpercentage", "", new { @class = "form-control" })
+                    @Html.TextBox("interiorpercentage", "", new { @class = "form-control", @placeholder = "Damaged Percentage" })
                     <label class="col-4">Interior Value</label>
                     @Html.TextBox("interiorvalue", "", new { @class = "form-control" })
                 </div>
                 <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Outer </label>
-                    @Html.TextBox("outerpercentage", "", new { @class = "form-control" })
+                    @Html.TextBox("outerpercentage", "", new { @class = "form-control", @placeholder = "Damaged Percentage" })
                     <label class="col-4">OuterBody Value</label>
                     @Html.TextBox("outervalue", "", new { @class = "form-control" })
                 </div>
                 <div class="form-group mt-5 text-center">
-                    &nbsp;           &nbsp;     &nbsp;     &nbsp; <button type="submit" class="btn btn-info form-control ml-5"> Submit</button>
+                    &nbsp;    &nbsp; &nbsp;   &nbsp;    &nbsp;     &nbsp; &nbsp;&nbsp;    &nbsp; <button type="submit" class="btn btn-info form-control ml-5"> Submit</button>
                 </div>
                 @Html.Hidden("claimId", null, new { @value = ViewBag.claimId })
                 @Html.Hidden("reportId", null, new { @value = ViewBag.reportId })
