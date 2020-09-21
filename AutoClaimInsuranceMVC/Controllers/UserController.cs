@@ -130,7 +130,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Claim([Bind(Include = "dateAndTime,policeCase,reason,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense,HttpPostedFileBase fileRc)
+        public ActionResult Claim([Bind(Include = "dateAndTime,policeCase,reason,licenseCopy,rcCopy")] Claim claim, HttpPostedFileBase fileLicense, HttpPostedFileBase fileRc)
         {
 
             string policyNumber = Session["policyNumber"].ToString();
@@ -166,59 +166,72 @@ namespace AutoClaimInsuranceMVC.Controllers
                     }
                 }
                 catch
-                   {
-                    ModelState.AddModelError("", "File Upload Failed");
-                   }
-              
-                    if (fileRc.ContentLength > 0)
-                    {
-                        string fileName = Path.GetFileName(fileRc.FileName);
-                        string FileExtension = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower();
-                        if (FileExtension == "pdf")
-                        {
-                            fileName = claim.policyNumber + "RC";
-                            pathRc = Path.Combine(Server.MapPath("~/App_Data"), fileName);
-                            fileRc.SaveAs(pathRc);
-                            ViewBag.Message_two = "File Uploaded Successfully!!";
-                            claim.rcCopy = pathRc;
-                        }
-                        else
-                        {
-                            ViewBag.Message_two = "Select a PDF file";
-                            claim.rcCopy = null;
-                        }
-                    }
-                
-                   else
-                   {
-                    ModelState.AddModelError("", "File Upload Failed");
-                   }
-                  
-                if (claim.licenseCopy != null && claim.rcCopy != null)
                 {
-                    var Claim = new Claim()
-                    {
-                        insurerId = insurerId,
-                        MailID = userId,
-                        policyNumber = policyNumber,
-                        dateAndTime = claim.dateAndTime,
-                        policeCase = claim.policeCase,
-                        reason = claim.reason,
-                        licenseCopy = pathLicense,
-                        rcCopy = pathRc,
-                        status = "progress",
-                        claimDate = DateTime.Now
-                    };
-                    db.Claims.Add(Claim);
-                    db.SaveChanges();
-                    return View();
+                    ModelState.AddModelError("", "File Upload Failed");
                 }
+
+                if (fileRc.ContentLength > 0)
+                {
+                    string fileName = Path.GetFileName(fileRc.FileName);
+                    string FileExtension = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower();
+                    if (FileExtension == "pdf")
+                    {
+                        fileName = claim.policyNumber + "RC";
+                        pathRc = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                        fileRc.SaveAs(pathRc);
+                        ViewBag.Message_two = "File Uploaded Successfully!!";
+                        claim.rcCopy = pathRc;
+                    }
+                    else
+                    {
+                        ViewBag.Message_two = "Select a PDF file";
+                        claim.rcCopy = null;
+                    }
+                }
+
                 else
-                    return View();
+                {
+                    ModelState.AddModelError("", "File Upload Failed");
+                }
+                var check = db.Claims.Where(c => c.policyNumber.Equals(claim.policyNumber)).FirstOrDefault();
+                if (check == null)
+                {
+
+                    if (claim.licenseCopy != null && claim.rcCopy != null)
+                    {
+                        var Claim = new Claim()
+                        {
+                            insurerId = insurerId,
+                            MailID = userId,
+                            policyNumber = policyNumber,
+                            dateAndTime = claim.dateAndTime,
+                            policeCase = claim.policeCase,
+                            reason = claim.reason,
+                            licenseCopy = pathLicense,
+                            rcCopy = pathRc,
+                            status = "progress",
+                            claimDate = DateTime.Now
+                        };
+                        db.Claims.Add(Claim);
+                        db.SaveChanges();
+                        return View();
+                    }
+                   
+                    
+                }
+                
+                else
+                {
+                    ViewBag.check = "Failed";
+                    return RedirectToAction("Index");
+                }
+
             }
             else
                 ModelState.AddModelError("", "Sorry your insurance date has expired");
+
             return View();
+            
         }
         [Authorize]
         public ActionResult Logout()

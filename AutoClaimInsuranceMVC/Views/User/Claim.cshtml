@@ -56,6 +56,14 @@
                 <div class="form-group mt-5 text-center ">
                     <input type="submit" value="Claim" class="btn btn-info" />
                 </div>
+                @if (@ViewBag.check == "success")
+                {
+                    <script>alert("Claimed Successfully")</script>
+                }
+                @if (@ViewBag.check == "failed")
+                {
+                    <script>alert("Already claimed in last 6 months")</script>
+                }
             </div>
 
         </div>
