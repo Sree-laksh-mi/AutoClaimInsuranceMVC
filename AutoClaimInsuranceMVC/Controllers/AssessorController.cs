@@ -17,7 +17,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         // GET: Assessor
         public ActionResult AssessorDetails(string reportId,string claimId)
         {
-            if (Session["role"].ToString() == "Assessor")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Assessor")
             {
                 int reportID = int.Parse(reportId);
                 int claimID = int.Parse(claimId);
@@ -33,7 +33,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult ReportGenerate(string damage,string claimId, string reportId)
         {
-            if (Session["role"].ToString() == "Assessor")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Assessor")
             {
                 int claimID = int.Parse(claimId);
                 var claim = db.Claims.Where(c => c.claimId == claimID).FirstOrDefault();
@@ -88,7 +88,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
         public ActionResult CreateReport(string glasspercentage, string glassvalue, string plasticpercentage, string plasticvalue, string interiorpercentage, string interiorvalue, string outerpercentage, string outervalue, string claimId, string reportId)
         {
-            if (Session["role"].ToString() == "Assessor")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Assessor")
             {
                 int claimID = int.Parse(claimId);
                 var claim = db.Claims.Where(c => c.claimId == claimID).FirstOrDefault();

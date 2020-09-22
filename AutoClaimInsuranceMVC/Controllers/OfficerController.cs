@@ -96,7 +96,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [HttpGet]
         public ActionResult AssessorPage()
         {
-            if (Session["role"].ToString() == "Assessor")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Assessor")
             {
                 string OfficerId = Session["OfficerId"].ToString();
                 var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) && (c.status.Equals("pending"))).ToList();
@@ -120,7 +120,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult Verify(int claimId, string policyNumber)
         {
-            if (Session["role"].ToString() == "Insurance officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Insurance officer")
             {
                 string claimid = claimId.ToString();
                 ViewBag.policyNumber = policyNumber;

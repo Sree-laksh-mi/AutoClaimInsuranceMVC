@@ -18,7 +18,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult ClaimOfficerPage()
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
 
                 var progress = db.Claims.Where(p => p.status.Equals("progress")).Count();
@@ -41,7 +41,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         public ActionResult ClaimProgress()
         {
 
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 var claim = db.Claims.Where(c => c.status.Equals("progress")).ToList();
                 if (claim != null)
@@ -65,7 +65,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         public ActionResult ClaimDetails(string claimId)
         {
 
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 int claimid = int.Parse(claimId);
                 var claimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
@@ -107,7 +107,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult CompletedReport()
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 var completedreport = db.Reports.Where(c => c.status.Equals("completed")).ToList();
                 ViewBag.completedreport = completedreport;
@@ -122,7 +122,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult AcceptClaim(string claimId,string reportId)
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 int claimID = int.Parse(claimId);
                 var acceptedclaim = db.Claims.Where(c => c.claimId == claimID).FirstOrDefault();
@@ -159,7 +159,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult RejectClaim(string claimId, string reportId)
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
 
                 int claimID = int.Parse(claimId);
@@ -198,7 +198,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult AcceptedClaim()
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 var acceptedclaim = db.Claims.Where(c => c.status.Equals("claimed")).ToList();
                 ViewBag.acceptedclaim = acceptedclaim;
@@ -211,7 +211,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         }
         public ActionResult RejectedClaim()
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 var rejectedclaim = db.Claims.Where(c => c.status.Equals("Rejected")).ToList();
                 ViewBag.rejectedclaim = rejectedclaim;
@@ -226,7 +226,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult AcceptedClaimDetails(string claimId)
         {
-            if (Session["role"].ToString() == "Claim officer")
+            if ((Session["officerId"] != null) && Session["role"].ToString() == "Claim officer")
             {
                 int claimid = int.Parse(claimId);
                 var acceptedClaimDetails = db.Claims.Where(c => c.claimId == claimid).FirstOrDefault();
