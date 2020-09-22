@@ -108,7 +108,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return clearText;
         }
-       
+
         [Authorize]
         [HttpGet]
         public ActionResult InsuranceView()
@@ -165,7 +165,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 string insurerId = user.insurerId;
                 string pathLicense = "";
                 string pathRc = "";
-                if(fileLicense!=null)
+                if (fileLicense != null)
                 {
                     if (fileLicense.ContentLength > 0)
                     {
@@ -241,10 +241,10 @@ namespace AutoClaimInsuranceMVC.Controllers
                         ViewBag.Status = "Claimed Successfully";
                         return View();
                     }
-                   
-                    
+
+
                 }
-                
+
                 else
                 {
                     ViewBag.check = "Failed";
@@ -256,7 +256,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 ModelState.AddModelError("", "Sorry your insurance date has expired");
 
             return View();
-            
+
         }
         [Authorize]
         public ActionResult GetStatus()
@@ -281,5 +281,15 @@ namespace AutoClaimInsuranceMVC.Controllers
             Session.Abandon();
             return RedirectToAction("Index");
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
     }
- }
+}

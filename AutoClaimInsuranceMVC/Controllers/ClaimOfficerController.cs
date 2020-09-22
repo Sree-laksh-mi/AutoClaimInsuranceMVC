@@ -237,31 +237,17 @@ namespace AutoClaimInsuranceMVC.Controllers
                 return RedirectToAction("OfficerLogin", "Officer");
             }
         }
-      
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
         
-
-        //[HttpPost]
-        //public ActionResult SendEmail(Mail obj)
-        //{
-        //    //Configuring webMail class to send emails  
-        //    //gmail smtp server  
-        //    WebMail.SmtpServer = "smtp.gmail.com";
-        //    //gmail port to send emails  
-        //    WebMail.SmtpPort = 587;
-        //    WebMail.SmtpUseDefaultCredentials = true;
-        //    //sending emails with secure protocol  
-        //    WebMail.EnableSsl = true;
-        //    //EmailId used to send emails from application  
-        //    WebMail.UserName = "autoclaiminsurance";
-        //    WebMail.Password = "autoclaim12345#";
-        //    //Sender email address.  
-        //    WebMail.From = "autoclaiminsurance@gmail.com";
-        //    //Send email  
-        //    WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
-        //    ViewBag.Status = "Email Sent Successfully.";
-        //    return RedirectToAction("CompletedReport");
-
-        //}
     }
 
 }

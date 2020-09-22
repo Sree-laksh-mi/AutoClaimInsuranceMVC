@@ -142,8 +142,15 @@ namespace AutoClaimInsuranceMVC.Controllers
                 return RedirectToAction("OfficerLogin", "Officer");
             }
         }
-        
 
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
     }
 }
