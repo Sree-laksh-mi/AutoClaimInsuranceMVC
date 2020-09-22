@@ -84,8 +84,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult Assign( string officerId,string claimId)
         {
-            if (Session["role"].ToString() == "Claim officer")
-            {
+            
                 int claimID = int.Parse(claimId);
                 Report report = new Report();
                 report.officerId = officerId;
@@ -102,11 +101,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 db.SaveChanges();
 
                 return RedirectToAction("ClaimProgress");
-            }
-            else
-            {
-                return RedirectToAction("OfficerLogin", "Officer");
-            }
+         
         }
         [HttpGet]
         [Authorize]

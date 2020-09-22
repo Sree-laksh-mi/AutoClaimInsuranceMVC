@@ -21,7 +21,7 @@ namespace AutoClaimInsuranceMVC.Models
         public DateTime startDate { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "Insurer ID")]
+        [Display(Name = "End Date")]
         public DateTime endDate { get; set; }
         [Required]
         [Display(Name = "Vehicle Registration Number")]

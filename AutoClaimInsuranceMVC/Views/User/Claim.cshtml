@@ -21,15 +21,15 @@
                 <h2 class="text-center text-primary" style="font-family:Algerian">Claim Form</h2>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
-                <label class="col-4"> Date and Time</label>
-                <input class="col form-control" type="datetime-local" id="dateAndTime" name="dateAndTime">
-                @*@Html.EditorFor(model => model.dateAndTime, new { htmlAttributes = new { @class = "col form-control" } })*@
-                @Html.ValidationMessageFor(model => model.dateAndTime, "", new { @class = "text-danger" })
-            </div>
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
+                    <label class="col-4"> Date and Time</label>
+                    <input class="col form-control" type="datetime-local" id="dateAndTime" name="dateAndTime">
+                    @*@Html.EditorFor(model => model.dateAndTime, new { htmlAttributes = new { @class = "col form-control" } })*@
+                    @Html.ValidationMessageFor(model => model.dateAndTime, "", new { @class = "text-danger" })
+                </div>
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4"> Police Case</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <h7>Yes</h7> &nbsp;@Html.RadioButtonFor(m => m.policeCase, "Yes", new { htmlAttributes = new { @class = "col form-control ml-5" } })
@@ -37,7 +37,7 @@
                     <h7>No</h7>@Html.RadioButtonFor(m => m.policeCase, "No", new { htmlAttributes = new { @class = "policscase" } })
                 </div>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-6"> Loss or Damage due to</label>
                     @Html.DropDownList("reason", new List<SelectListItem>
                        { new SelectListItem { Text = "Accident", Value = "Accident", Selected=true},
@@ -47,7 +47,7 @@
                        }, new { htmlAttributes = new { @class = "btn btn-secondary btn-lg dropdown-toggle  mr-5 form-control" } })
                 </div>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">Licence Copy </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -55,7 +55,7 @@
                     @ViewBag.Message
                 </div>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group row px-3"style="font-size:medium;font-family:'Book Antiqua'">
+                <div class="form-group row px-3" style="font-size:medium;font-family:'Book Antiqua'">
                     <label class="col-4">RC Copy </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -64,15 +64,11 @@
                 </div>
                 <div class="form-group mt-5 text-center ">
                     <input type="submit" value="Claim" class="btn btn-info" />
+                    <br />
+                    @ViewBag.Status
                 </div>
-                @if (@ViewBag.check == "success")
-                {
-                    <script>alert("Claimed Successfully")</script>
-                }
-                @if (@ViewBag.check == "failed")
-                {
-                    <script>alert("Already claimed in last 6 months")</script>
-                }
+
+                @Html.ActionLink("Back", "InsuranceView")
             </div>
 
         </div>

@@ -76,9 +76,11 @@ namespace AutoClaimInsuranceMVC.Controllers
                 {
                     ModelState.AddModelError("", "File Upload Failed");
                 }
-            var check = db.Claims.Where(c => c.policyNumber.Equals(claim.policyNumber)).FirstOrDefault();
-            if (check == null)
+
+            var insurance = db.Insurers.Where(i => i.insurerId == claim.insurerId).FirstOrDefault();
+            if (insurance != null)
             {
+
                 if (claim.licenseCopy != null && claim.rcCopy != null)
                 {
                     var Claim = new Claim()
@@ -96,17 +98,16 @@ namespace AutoClaimInsuranceMVC.Controllers
                     };
                     db.Claims.Add(Claim);
                     db.SaveChanges();
-                    ViewBag.check = "Success";
-                    return RedirectToAction("Index");
+                    ViewBag.Status = "Done";
+                    return View();
                 }
                 else
                     return View();
-               
             }
             else
             {
-                ViewBag.check = "Failed";
-                return RedirectToAction("Index");
+                ViewBag.Status = "Sorry Insurer ID not exists";
+                return View();
             }
         }
      }

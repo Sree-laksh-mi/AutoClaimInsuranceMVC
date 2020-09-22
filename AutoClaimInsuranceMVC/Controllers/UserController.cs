@@ -39,19 +39,27 @@ namespace AutoClaimInsuranceMVC.Controllers
             user.password = Encrypt(user.password);
             user.confirmPassword = Encrypt(user.confirmPassword);
             var check = db.registeredUsers.Find(user.userId);
-            if (check == null)
+            var idcheck = db.Insurers.Where(i => i.insurerId.Equals(user.insurerId)).FirstOrDefault();
+            if (idcheck != null)
             {
-                db.Configuration.ValidateOnSaveEnabled = false;
-                db.registeredUsers.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (check == null)
+                {
+                    db.Configuration.ValidateOnSaveEnabled = false;
+                    db.registeredUsers.Add(user);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "User already Exists");
+                    return View();
+                }
             }
             else
             {
-                ModelState.AddModelError("", "User already Exists");
+                ModelState.AddModelError("", "Please Check Your Insurer ID");
                 return View();
             }
-
         }
 
         public ActionResult Index()
@@ -214,6 +222,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                         };
                         db.Claims.Add(Claim);
                         db.SaveChanges();
+                        ViewBag.Status = "Claimed Successfully";
                         return View();
                     }
                    

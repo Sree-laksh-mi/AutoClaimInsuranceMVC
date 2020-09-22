@@ -83,7 +83,7 @@
         <script>
             function Assign(officerId, claimId) {
                 $.post("../ClaimOfficer/Assign", { officerId, claimId }, function (response, status) {
-                    alert("Assigned Successfully")
+                    alert("success")
                     if (status == "success")
                         location.href = "/ClaimOfficer/ClaimProgress"
                 })
