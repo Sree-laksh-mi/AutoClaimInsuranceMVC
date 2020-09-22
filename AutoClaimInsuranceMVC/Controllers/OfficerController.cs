@@ -74,64 +74,85 @@ namespace AutoClaimInsuranceMVC.Controllers
         [HttpGet]
         public ActionResult InsuranceOfficerPage()
         {
-            var claim = db.Claims.Where(c => c.status.Equals("pending")).ToList();
-            if (claim != null)
+            if (Session["role"].ToString() == "Insurance officer")
             {
-                return View(claim);
+                var claim = db.Claims.Where(c => c.status.Equals("pending")).ToList();
+                if (claim != null)
+                {
+                    return View(claim);
+                }
+                else
+                {
+                    ViewBag.Error = "Claim not exists";
+                }
+                return View();
             }
             else
             {
-                ViewBag.Error = "Claim not exists";
+                return RedirectToAction("OfficerLogin", "Officer");
             }
-            return View();
         }
         [Authorize]
         [HttpGet]
         public ActionResult AssessorPage()
         {
-            string OfficerId = Session["OfficerId"].ToString();
-            var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) && (c.status.Equals("pending"))).ToList();
-            if (reports != null)
+            if (Session["role"].ToString() == "Assessor")
             {
-                return View(reports);
+                string OfficerId = Session["OfficerId"].ToString();
+                var reports = db.Reports.Where(c => (c.officerId.Equals(OfficerId)) && (c.status.Equals("pending"))).ToList();
+                if (reports != null)
+                {
+                    return View(reports);
+                }
+                else
+                {
+                    ViewBag.Error = "Not valid";
+                }
+                return View();
             }
             else
             {
-                ViewBag.Error = "Not valid";
+                return RedirectToAction("OfficerLogin", "Officer");
             }
-            return View();
 
 
         }
         [Authorize]
         public ActionResult Verify(int claimId, string policyNumber)
         {
-            string claimid = claimId.ToString();
-            ViewBag.policyNumber = policyNumber;
-            var insurance = db.Insurances.Where(c => c.policyNumber.Equals(policyNumber)).FirstOrDefault();
-            if (insurance != null)
+            if (Session["role"].ToString() == "Insurance officer")
             {
-                DateTime lastDate = insurance.endDate;
-                int value = DateTime.Compare(DateTime.Now, lastDate);
-                if (value < 0)
+                string claimid = claimId.ToString();
+                ViewBag.policyNumber = policyNumber;
+                var insurance = db.Insurances.Where(c => c.policyNumber.Equals(policyNumber)).FirstOrDefault();
+                if (insurance != null)
                 {
-                    ViewBag.Exists = "Policy Exists";
-                    ViewBag.claimId = claimid;
-                    return View(insurance);
+                    DateTime lastDate = insurance.endDate;
+                    int value = DateTime.Compare(DateTime.Now, lastDate);
+                    if (value < 0)
+                    {
+                        ViewBag.Exists = "Policy Exists";
+                        ViewBag.claimId = claimid;
+                        return View(insurance);
+                    }
+                    else
+                    {
+                        ViewBag.Exists = " Policy has expired";
+                        ViewBag.claimId = claimid;
+                        return View();
+                    }
                 }
                 else
                 {
-                    ViewBag.Exists = " Policy has expired";
+                    ViewBag.check = "null";
                     ViewBag.claimId = claimid;
+                    ViewBag.Exists = "No valid policy number for this insurer ";
                     return View();
                 }
             }
             else
             {
-                ViewBag.check = "null";
-                ViewBag.claimId = claimid;
-                ViewBag.Exists = "No valid policy number for this insurer ";
-                return View();
+                return RedirectToAction("OfficerLogin", "Officer");
             }
         }
         [Authorize]
