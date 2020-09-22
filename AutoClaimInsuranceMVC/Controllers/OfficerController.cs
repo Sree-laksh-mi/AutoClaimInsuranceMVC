@@ -74,7 +74,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         [HttpGet]
         public ActionResult InsuranceOfficerPage()
         {
-            if (Session["role"].ToString() == "Insurance officer")
+            if ((Session["officerId"]!=null) && Session["role"].ToString() == "Insurance officer")
             {
                 var claim = db.Claims.Where(c => c.status.Equals("pending")).ToList();
                 if (claim != null)
