@@ -152,7 +152,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 string insurerId = user.insurerId;
                 string pathLicense = "";
                 string pathRc = "";
-                try
+                if(fileLicense!=null)
                 {
                     if (fileLicense.ContentLength > 0)
                     {
@@ -173,33 +173,36 @@ namespace AutoClaimInsuranceMVC.Controllers
                         }
                     }
                 }
-                catch
+                else
                 {
-                    ModelState.AddModelError("", "File Upload Failed");
+                    ModelState.AddModelError("", "Please upload a Lience copy");
                 }
 
-                if (fileRc.ContentLength > 0)
+                if (fileRc != null)
                 {
-                    string fileName = Path.GetFileName(fileRc.FileName);
-                    string FileExtension = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower();
-                    if (FileExtension == "pdf")
+                    if (fileRc.ContentLength > 0)
                     {
-                        fileName = claim.policyNumber + "RC";
-                        pathRc = Path.Combine(Server.MapPath("~/App_Data"), fileName);
-                        fileRc.SaveAs(pathRc);
-                        ViewBag.Message_two = "File Uploaded Successfully!!";
-                        claim.rcCopy = pathRc;
-                    }
-                    else
-                    {
-                        ViewBag.Message_two = "Select a PDF file";
-                        claim.rcCopy = null;
+                        string fileName = Path.GetFileName(fileRc.FileName);
+                        string FileExtension = fileName.Substring(fileName.LastIndexOf('.') + 1).ToLower();
+                        if (FileExtension == "pdf")
+                        {
+                            fileName = claim.policyNumber + "RC";
+                            pathRc = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                            fileRc.SaveAs(pathRc);
+                            ViewBag.Message_two = "File Uploaded Successfully!!";
+                            claim.rcCopy = pathRc;
+                        }
+                        else
+                        {
+                            ViewBag.Message_two = "Select a PDF file";
+                            claim.rcCopy = null;
+                        }
                     }
                 }
 
                 else
                 {
-                    ModelState.AddModelError("", "File Upload Failed");
+                    ModelState.AddModelError("", "Please Upload a RC copy");
                 }
                 var check = db.Claims.Where(c => c.policyNumber.Equals(claim.policyNumber)).FirstOrDefault();
                 if (check == null)
