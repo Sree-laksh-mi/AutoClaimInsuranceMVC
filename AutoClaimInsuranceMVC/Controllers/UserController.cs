@@ -113,26 +113,39 @@ namespace AutoClaimInsuranceMVC.Controllers
         [HttpGet]
         public ActionResult InsuranceView()
         {
-
-            string userId = (string)Session["userId"];
-            var user = db.registeredUsers.Where(c => c.userId.Equals(userId)).FirstOrDefault();
-
-            var insurances = db.Insurances.Where(c => c.insurerId.Equals(user.insurerId)).ToList();
-            if (insurances != null)
+            if (Session["userId"] != null)
             {
-                return View(insurances);
+                string userId = (string)Session["userId"];
+                var user = db.registeredUsers.Where(c => c.userId.Equals(userId)).FirstOrDefault();
+
+                var insurances = db.Insurances.Where(c => c.insurerId.Equals(user.insurerId)).ToList();
+                if (insurances != null)
+                {
+                    return View(insurances);
+                }
+                else
+                {
+                    ViewBag.Error = "No isurances";
+                }
+                return View();
             }
             else
             {
-                ViewBag.Error = "No isurances";
+                return RedirectToAction("Index", "User");
             }
-            return View();
         }
         [Authorize]
         public ActionResult Claim(string policyNumber)
         {
-            Session["policyNumber"] = policyNumber;
-            return View();
+            if (Session["userId"] != null)
+            {
+                Session["policyNumber"] = policyNumber;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "User");
+            }
         }
 
         [Authorize]
@@ -248,9 +261,16 @@ namespace AutoClaimInsuranceMVC.Controllers
         [Authorize]
         public ActionResult GetStatus()
         {
-            string userId = Session["userId"].ToString();
-            var claim = db.Claims.Where(c => c.MailID.Equals(userId)).ToList();
-            return View(claim);
+            if (Session["userId"] != null)
+            {
+                string userId = Session["userId"].ToString();
+                var claim = db.Claims.Where(c => c.MailID.Equals(userId)).ToList();
+                return View(claim);
+            }
+            else
+            {
+                return RedirectToAction("Index", "User");
+            }
         }
 
         [Authorize]
