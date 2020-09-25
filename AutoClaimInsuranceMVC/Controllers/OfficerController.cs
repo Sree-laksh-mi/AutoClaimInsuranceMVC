@@ -185,8 +185,8 @@ namespace AutoClaimInsuranceMVC.Controllers
             WebMail.SmtpUseDefaultCredentials = true;
             WebMail.EnableSsl = true;
             WebMail.UserName = "autoclaiminsurance";
-            WebMail.Password = "autoclaim12345#";
-            WebMail.From = "autoclaiminsurance@gmail.com";
+            WebMail.Password = "Your mail password here";
+            WebMail.From = "Your MailId here";
             WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
             return RedirectToAction("InsuranceOfficerPage");
         }

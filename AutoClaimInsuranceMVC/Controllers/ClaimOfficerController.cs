@@ -145,8 +145,8 @@ namespace AutoClaimInsuranceMVC.Controllers
                 WebMail.SmtpUseDefaultCredentials = true;
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "autoclaiminsurance";
-                WebMail.Password = "autoclaim12345#";
-                WebMail.From = "autoclaiminsurance@gmail.com";
+                WebMail.Password = "Mail password";
+                WebMail.From = "Your mailID here";
                 WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
                 return RedirectToAction("CompletedReport");
             }
@@ -183,8 +183,8 @@ namespace AutoClaimInsuranceMVC.Controllers
                 WebMail.SmtpUseDefaultCredentials = true;
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "autoclaiminsurance";
-                WebMail.Password = "autoclaim12345#";
-                WebMail.From = "autoclaiminsurance@gmail.com";
+                WebMail.Password = "Mail Password";
+                WebMail.From = "Your mailId here";
                 WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
                 return RedirectToAction("CompletedReport");
             }
