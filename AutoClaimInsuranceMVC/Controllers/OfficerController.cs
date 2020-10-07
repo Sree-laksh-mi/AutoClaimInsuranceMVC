@@ -21,6 +21,7 @@ namespace AutoClaimInsuranceMVC.Controllers
         {
             return View();
         }
+        // Post: Officer Login
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult OfficerLogin(Officer officer)
@@ -48,6 +49,7 @@ namespace AutoClaimInsuranceMVC.Controllers
 
             return View(officer);
         }
+        //Password Encryption Algorithm
         public static string encrypt(string clearText)
         {
             string EncryptionKey = "MAKV2SPBNI99212";
@@ -69,7 +71,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             }
             return clearText;
         }
-
+        //GET Insurance Offcer Page
         [Authorize]
         [HttpGet]
         public ActionResult InsuranceOfficerPage()
@@ -117,6 +119,7 @@ namespace AutoClaimInsuranceMVC.Controllers
 
 
         }
+        //Get Verify page
         [Authorize]
         public ActionResult Verify(int claimId, string policyNumber)
         {
@@ -155,6 +158,7 @@ namespace AutoClaimInsuranceMVC.Controllers
                 return RedirectToAction("OfficerLogin", "Officer");
             }
         }
+        //GET Accept Claim
         [Authorize]
         public ActionResult Accept(string claimId)
         {
@@ -166,6 +170,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             ViewBag.status = "Accepted";
             return RedirectToAction("InsuranceOfficerPage");
         }
+        //GET Insurance Reject page
         [Authorize]
         public ActionResult RejectInsurance(string claimId)
         {
@@ -190,7 +195,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EMailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
             return RedirectToAction("InsuranceOfficerPage");
         }
-
+        //Logout method, Destroys session
         [Authorize]
         public ActionResult Logout()
         {
@@ -199,6 +204,7 @@ namespace AutoClaimInsuranceMVC.Controllers
             Session.Abandon();
             return RedirectToAction("OfficerLogin");
         }
+        //Disposes the DBContext Object
         protected override void Dispose(bool disposing)
         {
             if (disposing)
